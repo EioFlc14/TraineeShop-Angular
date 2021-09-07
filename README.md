@@ -1,2 +1,2 @@
 # TraineeShop-Angular
-# Edison, Carlos, Alejandro, Gema, Javier, Edgar
+### Edison, Carlos, Alejandro, Gema, Javier, Edgar
