@@ -1,0 +1,138 @@
+<h1 style="text-align: center; color: deeppink "> Crear Cuenta </h1>
+<form #registroForm="ngForm">
+
+  <div class="p-grid p-fluid">
+  
+    <div class="p-col-12 p-md-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon" style="color: black; background-color: deeppink;"><i class="pi pi-user"></i></span>
+            <input pInputText type="text" name="nombre" maxlength="45" placeholder="Nombre y Apellido" pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1]{1}[a-zA-ZÀ-ÿ\u00f1\u00d1\s]*" [(ngModel)]="registro.nombre" #nombreInput="ngModel" required/>       
+        </div>
+        <div *ngIf="nombreInput.touched && nombreInput.dirty">
+          <p *ngIf="nombreInput.errors?.required " style="color: red">
+            Este campo es obligatorio.
+          </p>
+          <p *ngIf="nombreInput.errors?.pattern" style="color: red">
+            Ingrese solo caracteres alfabéticos.
+          </p>
+          <p *ngIf="nombreInput.errors?.maxlength" style="color: red">
+            Máximo 45 caracteres.
+          </p>
+        </div>
+    </div>
+    
+    <div class="p-col-12 p-md-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon" style="color: black; background-color: deeppink;"><i class="pi pi-phone"></i></span>   
+            <input pInputText type="text" name="celular" maxlength="15" pattern="([0-9]){10,}" [(ngModel)]="registro.celular" #celularInput="ngModel" required placeholder="Número Celular"/>
+        </div>
+        <div *ngIf="celularInput.touched && celularInput.dirty">
+          <p *ngIf="celularInput.errors?.required " style="color: red">
+            Este campo es obligatorio.
+          </p>
+          <p *ngIf="celularInput.errors?.pattern" style="color: red">
+            Ingrese un número celular válido.
+          </p>
+          <p *ngIf="celularInput.errors?.maxlength" style="color: red">
+            Máximo 15 caracteres.
+          </p>
+        </div>
+    </div>
+          
+    <div class="p-col-12 p-md-4">
+      <div class="p-inputgroup">
+          <span class="p-inputgroup-addon" style="color: black; background-color: deeppink;"><i class="pi pi-envelope"></i></span>   
+          <input pInputText type="email" name="email" maxlength="50" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" [(ngModel)]="registro.email" #emailInput="ngModel" required placeholder="Email"/>
+      </div>
+      <div *ngIf="emailInput.touched && emailInput.dirty">
+        <p *ngIf="emailInput.errors?.required " style="color: red">
+          Este campo es obligatorio.
+        </p>
+        <p *ngIf="emailInput.errors?.pattern" style="color: red">
+          Ingrese un email válido.
+        </p>
+        <p *ngIf="emailInput.errors?.maxlength" style="color: red">
+          Máximo 45 caracteres.
+        </p>
+      </div>
+    </div>    
+
+    <div class="p-col-12 p-md-4">
+      <div class="p-inputgroup">
+          <span class="p-inputgroup-addon" style="color: black; background-color: deeppink;"><i class="pi pi-map-marker"></i></span>   
+          <input pInputText type="texxt" name="direccion" maxlength="100" [(ngModel)]="registro.direccion" #direccionInput="ngModel" required placeholder="Dirección"/>
+      </div>
+      <div *ngIf="direccionInput.touched && direccionInput.dirty">
+        <p *ngIf="direccionInput.errors?.required " style="color: red">
+          Este campo es obligatorio.
+        </p>
+        <p *ngIf="direccionInput.errors?.maxlength" style="color: red">
+          Máximo 100 caracteres.
+        </p>
+      </div>
+    </div>   
+    
+    <div class="p-col-12 p-md-4">
+      <div class="p-inputgroup">
+          <span class="p-inputgroup-addon" style="color: black; background-color: deeppink;"><i class="pi pi-id-card"></i></span>   
+          <input pInputText type="text" name="cedula"  pattern="([0-9]){10}" [(ngModel)]="registro.cedula" #cedulaInput="ngModel" required placeholder="Cédula" />
+      </div>
+      <div *ngIf="cedulaInput.touched && cedulaInput.dirty">
+        <p *ngIf="cedulaInput.errors?.required " style="color: red">
+          Este campo es obligatorio.
+        </p>
+        <p *ngIf="cedulaInput.errors?.pattern || !validarCedula()" style="color: red">
+          Ingrese una cédula válida.
+        </p>
+      </div>
+    </div>   
+
+    <div class="p-col-12 p-md-4">
+      <div class="p-inputgroup">
+          <span class="p-inputgroup-addon" style="color: black; background-color: deeppink;"><i class="pi pi-key"></i></span>   
+          <input pInputText type="password" name="contrasena"  minlength="8" maxlength="45" [(ngModel)]="registro.contrasena" #passwordInput="ngModel" required placeholder="Contraseña" />
+      </div>
+      <div *ngIf="passwordInput.touched && passwordInput.dirty">
+        <p *ngIf="passwordInput.errors?.required " style="color: red">
+          Este campo es obligatorio.
+        </p>
+        <p *ngIf="passwordInput.errors?.maxlength" style="color: red">
+          Máximo 45 caracteres.
+        </p>
+        <p *ngIf="passwordInput.errors?.minlength" style="color: red">
+          Mínimo 8 caracteres.
+        </p>
+      </div>
+    </div>   
+
+    <div class="p-col-12 p-md-4">
+      <div class="p-inputgroup">
+          <span class="p-inputgroup-addon" style="color: black; background-color: deeppink;"><i class="pi pi-key"></i></span>   
+          <input pInputText type="password" name="confirmContrasena"  minlength="8" maxlength="45" [(ngModel)]="confirmContrasena" #passwordConfInput="ngModel" required placeholder="Confirme su contraseña" />
+      </div>
+      <div *ngIf="passwordConfInput.touched && passwordConfInput.dirty">
+        <p *ngIf="passwordConfInput.errors?.required " style="color: red">
+          Este campo es obligatorio.
+        </p>
+        <p *ngIf="passwordConfInput.errors?.maxlength" style="color: red">
+          Máximo 45 caracteres.
+        </p>
+        <p *ngIf="passwordConfInput.errors?.minlength" style="color: red">
+          Mínimo 8 caracteres.
+        </p>
+        <p *ngIf="registro.contrasena != confirmContrasena" style="color: red">
+          Contraseñas no coinciden.
+        </p>
+      </div>
+    </div>   
+
+  
+    <div class="p-col-12 p-md-4">
+      <div class="p-inputgroup">
+        <button pButton pRipple style="background: tomato;" icon="pi pi-check" iconPos="right" name="addButton" label="Crear Cuenta" type="button" [disabled]="!registroForm.valid || !validarCedula() || !validarContrasena()"></button>
+         <!-- <p-button name="addButton" label="CREAR" type="button" style="background-color: deeppink" [disabled]="!registroForm.valid || !validarCedula() || !validarContrasena()" ></p-button> -->
+      </div>
+    </div>   
+</div>
+
+</form>
