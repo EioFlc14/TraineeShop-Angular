@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['dashboard']);
       }else{
         this.errorStatus = true;
-        this.errorMsj = "Usuario o contrasena incorrectos";
+        this.errorMsj = "Usuario o contraseña incorrectos";
     }})
   }
 
