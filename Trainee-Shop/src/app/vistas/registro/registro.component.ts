@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-//import { MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { ApiRegistroServicio } from 'src/app/servicios/api/api-registro.service';
-import { RegistroI } from './../../modelos/response-registro.interface';
+import { ResponsRegistroI } from './../../modelos/response-registro.interface';
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  styleUrls: ['./registro.component.css'],
+  providers: [MessageService]
 })
 
 export class RegistroComponent implements OnInit {
@@ -26,7 +27,7 @@ export class RegistroComponent implements OnInit {
   constructor(
     private api:ApiRegistroServicio, 
     private router:Router,
-    //private messageService: MessageService
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -107,31 +108,39 @@ export class RegistroComponent implements OnInit {
   }
 
   crearCuenta(){
-    this.api.getByCedula(this.registro.cedula).subscribe(
-      dataCedulaResponse => {
-      //let dataCedulaResponse1:RegistroI = dataCedulaResponse;
-      if(dataCedulaResponse != null){
-        // mandar un mensaje de que ya existe la cedula
-      }else{
-        this.api.getByEmail(this.registro.email).subscribe(
-          dataEmailResponse => {
-            //let dataEmailResponse1:RegistroI = dataEmailResponse;
-            if(dataEmailResponse != null){
-              // mandar un mensaje de que ya existe el email
-            } else {
-              this.api.creatCuenta(this.registro).subscribe(
-                insercionRgistro => {
-                  //this.messageService.add({key: 'myKey1', severity:'success', summary: 'Cuenta creada exitosamente'});
-                },
-                error => {
-                  //this.messageService.add({key: 'myKey1', severity:'error', summary: 'Error al crear la cuenta'});
-                }
-              )
+    let registroInsert = {
+      "nombreCliente": this.registro.nombre,
+      "cedula": this.registro.cedula,
+      "passwordCliente": this.registro.contrasena,
+      "direccionCliente": this.registro.direccion,
+      "emailCliente": this.registro.email,
+      "celularCliente": this.registro.celular
+    }
+    
+    this.api.getByCedula(registroInsert.cedula).subscribe(
+      dataExistente => {
+        let clienteExistente:ResponsRegistroI = dataExistente;
+        if(clienteExistente != null){
+          this.messageService.add({key: 'myKey1', severity:'error', summary: 'Error al crear la cuenta, cédula o email ya registrados.'});
+        } else {
+          this.api.crearCuenta(registroInsert).subscribe(
+            insercionRgistro => {
+              console.log(insercionRgistro)
+              // mandar a supermercados y limpiar la pantalla
+              this.router.navigate(['login']);
+              this.messageService.add({key: 'myKey1', severity:'success', summary: 'Cuenta creada exitosamente'});
+            },
+            error => {
+              console.log(error.status);
+              if(error.status == 500){
+                this.messageService.add({key: 'myKey1', severity:'error', summary: 'Error al crear la cuenta, cédula o email ya registrados.'});
+              }
             }
-          }
-        )
-    }});
-  
+          )
+        }
+      }
+    )
+
   }
 
 }

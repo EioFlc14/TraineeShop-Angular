@@ -47,7 +47,7 @@
     <div class="p-md-3" style="width: 45%;">
       <div class="p-inputgroup">
         <span class="p-inputgroup-addon" style="color: black; background-color: #F337C2;"><i class="pi pi-envelope"></i></span>   
-        <input pInputText type="email" name="email" maxlength="50" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" [(ngModel)]="registro.email" #emailInput="ngModel" required placeholder="Email"/>
+         <input pInputText type="email" name="email" maxlength="50" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" [(ngModel)]="registro.email" #emailInput="ngModel" required placeholder="Email"/> 
       </div>
       <div *ngIf="emailInput.touched && emailInput.dirty">
         <p *ngIf="emailInput.errors?.required " style="color: red">
@@ -160,12 +160,12 @@
 
     <div class="p-md-3" style="width: 60%;">
       <div class="p-inputgroup">
-        <button pButton pRipple style="background: #FF6D4D; width: 100%;" name="addButton" label="Crear Cuenta" type="button" [disabled]="!registroForm.valid || !validarCedula() || !validarContrasena()"></button>
+        <button pButton pRipple style="background: #FF6D4D; width: 100%;" name="addButton" label="Crear Cuenta" type="button" [disabled]="!registroForm.valid || !validarCedula() || !validarContrasena()" (click)="crearCuenta()"></button>
       </div>
     </div>
 
 
-    <!-- <p-toast key="myKey1" position="bottom-left"></p-toast> -->
+    <p-toast key="myKey1" position="bottom-left"></p-toast>
 
   </div>
 

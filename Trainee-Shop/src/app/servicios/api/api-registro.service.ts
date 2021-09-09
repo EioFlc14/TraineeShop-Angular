@@ -1,4 +1,4 @@
-import { RegistroI } from './../../modelos/response-registro.interface';
+import { ResponsRegistroI } from './../../modelos/response-registro.interface';
 import { Injectable } from '@angular/core';
 
 import {LoginI} from '../../modelos/login.interface';
@@ -14,23 +14,22 @@ export class ApiRegistroServicio {
     private _http:HttpClient
     ) { }
 
-  getByCedula(cedula:string):Observable<RegistroI>{
-    var url = "http://34.227.98.168:4005/clientes/login/";
-    let direccion = url;
-    return this._http.get<RegistroI>(direccion);
+  getByCedula(cedula:string):Observable<ResponsRegistroI>{
+    var url = "http://34.227.98.168:4003/clientes/login/";
+    let direccion = url + cedula;
+    return this._http.get<ResponsRegistroI>(direccion);
   }
 
-
-  getByEmail(email:string):Observable<RegistroI>{
-    var url = "http://34.227.98.168:4005/clientes/login/";
-    let direccion = url;
-    return this._http.get<RegistroI>(direccion);
+  getall():Observable<any>{
+    var url = "http://34.227.98.168:4003/clientes/login/";
+    let direccion = url; // + cedula;
+    return this._http.get<ResponsRegistroI>(direccion);
   }
 
-  creatCuenta(registro:any):Observable<RegistroI>{
+  crearCuenta(registro:any):Observable<any>{
     var url = "http://34.227.98.168:4003/clientes/";
     let direccion = url;
-    return this._http.post<RegistroI>(direccion,registro);
+    return this._http.post<any>(direccion,registro);
   }
 
 

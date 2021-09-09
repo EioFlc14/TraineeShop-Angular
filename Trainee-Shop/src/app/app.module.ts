@@ -13,7 +13,7 @@ import { RegistroComponent } from './vistas/registro/registro.component';
 import { ButtonModule } from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {ToastModule} from 'primeng/toast';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,8 +31,8 @@ import {ToastModule} from 'primeng/toast';
     HttpClientModule,
     ButtonModule,
     InputTextModule,
-    ToastModule
-
+    ToastModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
