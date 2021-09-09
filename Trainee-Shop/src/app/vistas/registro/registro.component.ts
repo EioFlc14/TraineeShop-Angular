@@ -126,7 +126,6 @@ export class RegistroComponent implements OnInit {
           this.api.crearCuenta(registroInsert).subscribe(
             insercionRgistro => {
               console.log(insercionRgistro)
-              // mandar a supermercados y limpiar la pantalla
               this.router.navigate(['login']);
               this.messageService.add({key: 'myKey1', severity:'success', summary: 'Cuenta creada exitosamente'});
             },
