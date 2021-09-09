@@ -15,19 +15,19 @@ export class ApiRegistroServicio {
     ) { }
 
   getByCedula(cedula:string):Observable<ResponsRegistroI>{
-    var url = "http://34.227.98.168:4003/clientes/login/";
+    var url = "http://54.221.130.211:4003/clientes/login/";
     let direccion = url + cedula;
     return this._http.get<ResponsRegistroI>(direccion);
   }
 
   getall():Observable<any>{
-    var url = "http://34.227.98.168:4003/clientes/login/";
+    var url = "http://54.221.130.211:4003/clientes/login/";
     let direccion = url; // + cedula;
     return this._http.get<ResponsRegistroI>(direccion);
   }
 
   crearCuenta(registro:any):Observable<any>{
-    var url = "http://34.227.98.168:4003/clientes/";
+    var url = "http://54.221.130.211:4003/clientes/";
     let direccion = url;
     return this._http.post<any>(direccion,registro);
   }
