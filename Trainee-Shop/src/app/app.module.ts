@@ -9,10 +9,11 @@ import { FooterComponent } from './plantillas/footer/footer.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { RegistroComponent } from './vistas/registro/registro.component';
-import { ProductosComponent } from './vistas/productos/productos.component';
 
 import { ButtonModule } from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
+import {ToastModule} from 'primeng/toast';
+
 
 @NgModule({
   declarations: [
@@ -20,8 +21,7 @@ import {InputTextModule} from 'primeng/inputtext';
     HeaderComponent,
     FooterComponent,
     routingComponents,
-    RegistroComponent,
-    ProductosComponent
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +30,8 @@ import {InputTextModule} from 'primeng/inputtext';
     FormsModule,
     HttpClientModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    ToastModule
 
   ],
   providers: [],

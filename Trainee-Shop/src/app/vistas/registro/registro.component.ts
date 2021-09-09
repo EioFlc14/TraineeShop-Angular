@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+//import { MessageService } from 'primeng/api';
+import { ApiRegistroServicio } from 'src/app/servicios/api/api-registro.service';
+import { RegistroI } from './../../modelos/response-registro.interface';
 
 @Component({
   selector: 'app-registro',
@@ -19,7 +23,11 @@ export class RegistroComponent implements OnInit {
 
   confirmContrasena = null;
 
-  constructor() { }
+  constructor(
+    private api:ApiRegistroServicio, 
+    private router:Router,
+    //private messageService: MessageService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -27,7 +35,6 @@ export class RegistroComponent implements OnInit {
   validarCedula(){
 
     var cedula = this.registro.cedula;
-    //var cedula = '1727161620';
 
     //Preguntamos si la cedula consta de 10 digitos
     if(cedula.length == 10){
@@ -78,22 +85,15 @@ export class RegistroComponent implements OnInit {
          if(digito_validador == 10)
            var digito_validador = 0;
 
-         //Validamos que el digito validador sea igual al de la cedula
          if(digito_validador == Number(ultimo_digito)){
-           console.log('la cedula:' + cedula + ' es correcta');
            return true;
          }else{
-           console.log('la cedula:' + cedula + ' es incorrecta');
            return false;
          }
-         
        }else{
-         // imprimimos en consola si la region no pertenece
-         console.log('Esta cedula no pertenece a ninguna region');
          return false;
        }
     }else{
-       //imprimimos en consola si la cedula tiene mas o menos de 10 digitos
        return false;
     }  
   }
@@ -102,4 +102,39 @@ export class RegistroComponent implements OnInit {
     return this.registro.contrasena == this.confirmContrasena;
   }
 
+  validarDireccion(){
+    return !this.registro.direccion.trim();
+  }
+
+  crearCuenta(){
+    this.api.getByCedula(this.registro.cedula).subscribe(
+      dataCedulaResponse => {
+      //let dataCedulaResponse1:RegistroI = dataCedulaResponse;
+      if(dataCedulaResponse != null){
+        // mandar un mensaje de que ya existe la cedula
+      }else{
+        this.api.getByEmail(this.registro.email).subscribe(
+          dataEmailResponse => {
+            //let dataEmailResponse1:RegistroI = dataEmailResponse;
+            if(dataEmailResponse != null){
+              // mandar un mensaje de que ya existe el email
+            } else {
+              this.api.creatCuenta(this.registro).subscribe(
+                insercionRgistro => {
+                  //this.messageService.add({key: 'myKey1', severity:'success', summary: 'Cuenta creada exitosamente'});
+                },
+                error => {
+                  //this.messageService.add({key: 'myKey1', severity:'error', summary: 'Error al crear la cuenta'});
+                }
+              )
+            }
+          }
+        )
+    }});
+  
+  }
+
 }
+
+
+
