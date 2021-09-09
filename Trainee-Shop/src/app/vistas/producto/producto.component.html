@@ -1,13 +1,15 @@
 <div style="text-align:center">
+    <br>
     <h1>
       Trainee Shop
     </h1>
+    <br>
      <!-- Force next columns to break to new line -->
     <div class="container">
       <div class="row align-items-center justify-content-center">
-        <div class="col-sm-6 col-md-4" *ngFor="let item of supermercado;let i = index">
+        <div class="col-sm-6 col-md-4" *ngFor="let item of supermercado;let i = index" >
           <div class="card">
-            <img [src]="item.imagen_producto" class="card-img-top" alt="bootstrap">
+            <img [src]="item.imagen_producto " class="card-img-top" alt="bootstrap">
             <div class="card-body">
               <h5 class="card-title">
                 {{ item.nombre_producto }}
@@ -15,12 +17,16 @@
               <p class="card-text">
                 {{ item.precio }} • {{ item.unidad }}  
               </p>
-              <input type="number" class="form-control"  min="1" [max]="item.idProducto" [id]="'cantidad'+i">
+              <input type="number" class="form-control "  min="1" [max]="item.idProducto" [id]="'cantidad'+i">
               <a class="btn btn-primary btn-sm " href="javascript:void(0)" role="button" (click)="addProduct(item.idProducto,i)">Agregar</a>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="container">
+        <br>
+        <br>
     </div>
     <div class="container">
       <div class="row" *ngIf="totalfinal">
