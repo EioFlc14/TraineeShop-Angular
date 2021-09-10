@@ -88,7 +88,7 @@ export class ProductoComponent {
         console.log('esta es la cantidad',cantidad);
         console.log('este es el stock',parseInt(this.tasks[indproducto].stock));
         console.log('esta es el res 3',this.res);
-        if((cantidad>0) && (cantidad <= parseInt(this.tasks[indproducto].stock))  || (this.res>=cantidad) || (this.res>=0) ){
+        if((cantidad>0) && (cantidad <= parseInt(this.tasks[indproducto].stock))   ){
           this.res=parseInt(this.tasks[indproducto].stock);
           console.log('esto tiene el res',this.res);
           this.total.push({
