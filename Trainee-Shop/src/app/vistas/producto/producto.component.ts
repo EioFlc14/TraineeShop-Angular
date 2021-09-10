@@ -67,6 +67,7 @@ export class ProductoComponent {
   addProduct(idProducto: any,index: any){
       console.log([idProducto,index]);
       const cantidad:number = parseInt((<HTMLInputElement>document.getElementById(`cantidad${index}`)).value);
+     // let cantidad:any = Object.keys(this.tasks).find(x => this.tasks[x]. == idProducto);
       let indproducto:any = Object.keys(this.tasks).find(x => this.tasks[x].idProducto == idProducto);
       let subtotal=cantidad*this.tasks[indproducto].precio;
       console.log([cantidad]);
@@ -80,10 +81,10 @@ export class ProductoComponent {
         "nombre":this.tasks[indproducto].nombre_producto,
         "unidad":this.tasks[indproducto].unidad,
         "precio":this.tasks[indproducto].precio,
-       // "cantidad":cantidad,
-        "cantidad":this.tasks[indproducto].stock,
-        "subtotal":subtotal,
-      });
+        "cantidad":cantidad,
+        //"cantidad":this.tasks[indproducto].stock,     
+        "subtotal":subtotal
+      }); 
       this.ftotal();
   }  
   remProduct(id:any){
