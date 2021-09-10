@@ -26,8 +26,8 @@ export class ApiSupermercadoService {
         return supermercados as Supermercado[]
       })
     );
-    
+
 
   }
-  
+
 }

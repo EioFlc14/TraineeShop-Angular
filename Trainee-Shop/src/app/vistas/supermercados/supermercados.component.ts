@@ -32,21 +32,19 @@ export class SupermercadosComponent implements OnInit {
   */
   mensajeIngreso: any = "";
   enviarIdSuper(id: any) {
-    console.log("el id del super",id);
+    console.log("el id del super", id);
     this.service.loginProductos(id).subscribe(data => {
       let dataResponse: responseSupercadoI = data;
-      //localStorage.removeItem("cedula");
-      //sessionStorage.removeItem("cedula");
       if (dataResponse != null) {
-        //localStorage.setItem("cedula",dataResponse.cedula);
-        sessionStorage.setItem("id", dataResponse.nombre_supermercado);
-        console.log(dataResponse.nombre_supermercado);
+        let idS: string = "" + id;
+        sessionStorage.setItem("id", idS);
+        console.log("convertido a string es: " + idS)
         this.router.navigate(['dashboard']);
       } else {
         this.mensajeIngreso = "NO SE PUEDE INGRESAR A LOS PRODUCTOS";
       }
     })
-    
+
   }
 
 
