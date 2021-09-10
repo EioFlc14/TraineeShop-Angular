@@ -39,10 +39,10 @@
       <div class="col-1 border">
         Precio
     </div>
-    <div class="col-2 border">
+    <div class="col-1 border">
       Cantidad
   </div>
-  <div class="col-2 border">
+  <div class="col-1 border">
     Subtotal
   </div>
       </div>
@@ -57,26 +57,29 @@
         <div class="col-1 border"> 
           {{ item.precio }}
         </div>
-        <div class="col-2 border"> 
+        <div class="col-1 border"> 
           {{ item.cantidad }}
         </div>
-        <div class="col-2 border"> 
+        <div class="col-1 border"> 
           {{ item.subtotal }}
         </div>
-        <div class="col-1 border">
-            <button  class="btn-primary" (click)="remProduct(i)">Eliminar</button>
+        <div class="col-3 border">
+            <button  class="btn-primary border-3" (click)="remProduct(i)">Eliminar</button>
         </div>
+       
       </div>
       <div class="row" *ngIf="totalfinal">
-          <div class="col-7 border">
+          <div class="col-6 border">
             Total
           </div>
-          <div class="col-2 border">
+          <div class="col-1 border">
               {{totalfinal}}
-              <button class="btn-primary" >
-                Comprar
-            </button>
           </div>
+          <div class="col-3 border">
+            <button class="btn-second border-3">
+              Comprar
+          </button>
+        </div>
       </div>
       
      
