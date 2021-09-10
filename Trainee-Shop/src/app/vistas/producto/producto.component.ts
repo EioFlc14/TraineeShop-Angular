@@ -17,6 +17,7 @@ import { Component } from '@angular/core';
 import { ProductoService } from '../../servicios/api/api-productos.service';
 import {MatDialogModule, MatDialogConfig, MatDialogRef, MatDialog} from '@angular/material/dialog'; 
 import { Router } from '@angular/router';
+import { PagoComponent } from '../pago/pago.component';
 //import { PagoComponent } from '../pago/pago.component';
 @Component({
   selector: 'app-producto',
@@ -33,7 +34,7 @@ export class ProductoComponent {
   acu:number=0;
   sup_recibido:string="";
   constructor(
-    private taskService:ProductoService,private router: Router//,public dialog: MatDialog
+    private taskService:ProductoService,private router: Router,public dialog: MatDialog//,public dialog: MatDialog
     //
   )  {
     this.getAllTasks();
@@ -120,13 +121,22 @@ export class ProductoComponent {
   }
 
   //mensajeIngreso: any = "";
-  enviarprecio() {
-    console.log("el total final", this.totalfinal);
-        let idS: string = "" + this.totalfinal;
-        sessionStorage.setItem("tpvp", idS);
-        console.log("convertido a string es: " + idS)
-        this.router.navigate(['pago']);
+
+   
+    openDialog() {
+      let idS: string = "" + this.totalfinal;
+      sessionStorage.setItem("tpvp", idS);
+      console.log("convertido a string es: " + idS)
+      // this.router.navigate(['pago']);
+      const dialogConfig = new MatDialogConfig();
       
+  
+      dialogConfig.disableClose = false;
+      dialogConfig.autoFocus = true;
+  
+      const dialogRef = this.dialog.open(PagoComponent, dialogConfig);
+  
+  
     }
 
 }

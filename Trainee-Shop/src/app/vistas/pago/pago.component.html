@@ -38,7 +38,7 @@
 
  <app-footer></app-footer> -->
 
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 <div class="wrapper fadeInDown">
 
   <div id="formContent">
@@ -46,10 +46,10 @@
     <h2>Pagos</h2>
     
     <!-- Login Form -->
-    <form >
+    <form #registroForm="ngForm">
       <div class="container" >
         Cliente:
-        <input type="text" class="form-control" readonly=false >
+        <label type="text" class="form-control" >{{nombrecli}}</label>
       </div>
       <div class="container" >
           Direccion:
@@ -57,7 +57,7 @@
       </div>
       <div class="container" >
         precio:
-        <input type="text" class="form-control" >
+        <label id="precio" type="text"  class="form-control"  >{{precio}} </label>
       </div>
       <div class="container" >
         Tipo de Pago:
@@ -76,16 +76,14 @@
       </div>
       <div class="container" >
           Ingresar cuenta:
-            <input id="cuenta" type="text" class="form-control" placeholder="Titulo" required>
+            <input pInputText id="cuenta" name="cuenta_"type="text" class="form-control" [(ngModel)]="cuenta" placeholder="Titulo" required>
       </div>
+      
       <div class="container" >
-        <button type="button" class="btn btn-light">Close</button>
-      </div>
-      <div class="container" >
-        <button  class="btn btn-danger">Save</button>
+        <button pButton class="btn btn-danger" (click)="enviar()" >Pagar</button>
       </div>
     </form>
 
   </div>
 </div>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->
