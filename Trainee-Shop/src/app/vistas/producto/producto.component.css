@@ -1,0 +1,124 @@
+.img-fluid {
+    width: 200px;
+    height: 300px;
+    margin-top: 20px;
+}
+
+
+.section-bg {
+  background-color: #aaaaaa;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 10px;
+   padding-top: 40px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.doctors .member {
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0px 2px 15px rgba(63, 187, 192, 0.1);
+}
+
+.doctors .member .member-img {
+  position: relative;
+  overflow: hidden;
+}
+
+
+.doctors .member .member-info {
+  padding: 25px 15px;
+}
+
+.doctors .member .member-info h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #555555;
+}
+
+.doctors .member .member-info span {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: #aaaaaa;
+}
+
+.doctors .member .member-info p {
+  font-style: italic;
+  font-size: 14px;
+  line-height: 26px;
+  color: #777777;
+}
+
+.col-md-6 {
+    flex: 0 0 auto;
+    width: 25%;
+    padding-left: 70px;
+}
+
+container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 50px;
+  padding-left: 40px;
+
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+  color: #F337C2;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+ }
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #F337C2; 
+}
+.btn-primary{
+ border-color:#FF6D4D;
+ background-color:#FF6D4D;
+ text-align: center!important;
+ margin-top: 20px;
+ color: black;
+ margin-left: 25px;
+ line-height: 30px;
+ width: 150px;
+ font-family: "Raleway", sans-serif;
+ margin-top: 20px;
+
+}
+.btn-second{
+    border-color:#F337C2;
+    background-color:#F337C2;
+    text-align: center!important;
+    margin-top: 20px;
+    color: black;
+    margin-left: 25px;
+    line-height: 30px;
+    width: 150px;
+    font-family: "Raleway", sans-serif;
+    margin-top: 20px;
+   
+   }

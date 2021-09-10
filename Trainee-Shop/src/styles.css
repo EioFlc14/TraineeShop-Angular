@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+tbody tr:nth-child(odd) {
+    background-color: #FF6D4D;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #F337C2;
+  }
+  
+  table {
+    background-color: #ffffff;
+  }
+  * {
+    -webkit-box-sizing: border-box;
+}

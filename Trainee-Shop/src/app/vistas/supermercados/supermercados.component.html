@@ -1,0 +1,27 @@
+<app-header></app-header>
+<body>
+<div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>{{titulo}}</h2>
+          <h5>Contamos con los siguientes supermercados</h5>
+        </div>
+        <div class="row" >
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" *ngFor="let supermercado of supermercados; let i=index;"> 
+             <div class="member" data-aos="fade-up" data-aos-delay="100">
+                <div class="member-img">
+                    <img src="{{supermercado.imagen_supermercado}}" class="img-fluid" alt="{{supermercado.nombre_supermercado}}">
+                </div>
+                <div class="member-img">
+                    <a  (click)="enviarIdSuper(supermercado.idSupermercado)" class="btn btn-primary "  role="button">{{supermercado.nombre_supermercado}}</a>
+                </div>
+                
+              </div>
+          </div>
+        </div>
+    
+</div>
+</body>
+<br>
+<br>
+<br>
+<app-footer></app-footer>

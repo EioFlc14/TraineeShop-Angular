@@ -1,0 +1,88 @@
+<app-header></app-header>
+<div style="text-align:center "> 
+    <br>
+    <h1 style="color: rgb(233, 10, 177)">
+      Trainee Shop
+    </h1>
+    <br>
+     <!-- Force next columns to break to new line -->
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-sm-6 col-md-4" *ngFor="let item of supermercado;let i = index" >
+          <div class="card">
+            <img [src]="item.imagen_producto" class="card-img-top" alt="bootstrap">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ item.nombre_producto }}
+              </h5>
+              <p class="card-text">
+                {{ item.precio }} • {{ item.unidad }}  
+              </p>
+              <input type="number" class="form-control " min="1" [max]="item.stock" [id]="'cantidad'+i">
+              <a class="btn btn-primary btn-sm " href="javascript:void(0)" role="button" (click)="addProduct(item.idProducto,i)">Agregar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+        <br>
+    </div>
+    <div class="container">
+      <div class="row" *ngIf="totalfinal">
+        <div class="col-2 border">
+            Producto
+        </div>
+        <div class="col-2 border">
+          Unidad
+      </div>
+      <div class="col-1 border">
+        Precio
+    </div>
+    <div class="col-1 border">
+      Cantidad
+  </div>
+  <div class="col-1 border">
+    Subtotal
+  </div>
+      </div>
+      <div class="row " *ngFor="let item of total;let i = index">
+        
+        <div class="col-2 border"> 
+          {{ item.nombre }}
+        </div>
+        <div class="col-2 border"> 
+          {{ item.unidad }}
+        </div>
+        <div class="col-1 border"> 
+          {{ item.precio }}
+        </div>
+        <div class="col-1 border"> 
+          {{ item.cantidad }}
+        </div>
+        <div class="col-1 border"> 
+          {{ item.subtotal | number: '1.1-2' }}
+        </div>
+        <div class="col-3">
+            <button  class="btn-primary border-3 btn-sm" (click)="remProduct(i)">Eliminar</button>
+        </div>
+       
+      </div>
+      <div class="row" *ngIf="totalfinal">
+          <div class="col-6 border">
+            Total
+          </div>
+          <div class="col-1 border">
+            {{ totalfinal | number: '1.1-2' }}
+          </div>
+          <div class="col-3">
+            <button class="btn-second border-3 btn-sm" (click)="enviarprecio()">
+              Comprar
+          </button>
+        </div>
+      </div>
+      <br>
+     
+    </div>
+  </div>
+  <app-footer></app-footer>
