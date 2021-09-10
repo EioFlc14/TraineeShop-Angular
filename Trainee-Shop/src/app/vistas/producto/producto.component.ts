@@ -31,6 +31,7 @@ export class ProductoComponent {
   totalfinal:number=0;
   pvp:number=0;
   acu:number=0;
+  res:number=0;
   sup_recibido:string="";
   constructor(
     private taskService:ProductoService,private router: Router//,public dialog: MatDialog
@@ -76,7 +77,7 @@ export class ProductoComponent {
   }
   addProduct(idProducto: any,index: any){
       console.log([idProducto,index]);
-      const cantidad:number = parseInt((<HTMLInputElement>document.getElementById(`cantidad${index}`)).value);
+      let cantidad:number = parseInt((<HTMLInputElement>document.getElementById(`cantidad${index}`)).value);
      // let cantidad:any = Object.keys(this.tasks).find(x => this.tasks[x]. == idProducto);
       let indproducto:any = Object.keys(this.tasks).find(x => this.tasks[x].idProducto == idProducto);
       let subtotal=cantidad*this.tasks[indproducto].precio;
@@ -86,7 +87,10 @@ export class ProductoComponent {
       if(this.tasks[indproducto].stock){
         console.log('esta es la cantidad',cantidad);
         console.log('este es el stock',parseInt(this.tasks[indproducto].stock));
-        if(cantidad>0 && cantidad <= parseInt(this.tasks[indproducto].stock)){
+        console.log('esta es el res 3',this.res);
+        if((cantidad>0) && (cantidad <= parseInt(this.tasks[indproducto].stock))   ){
+          this.res=parseInt(this.tasks[indproducto].stock);
+          console.log('esto tiene el res',this.res);
           this.total.push({
             "id":this.tasks[indproducto].idProducto,
             "nombre":this.tasks[indproducto].nombre_producto,
@@ -97,12 +101,16 @@ export class ProductoComponent {
             "subtotal":subtotal
           }); 
           this.ftotal();
+          this.res=this.res-cantidad;
+          cantidad=this.res;
+          console.log('esto tiene el cantidad con la res',cantidad);
+          console.log('esto es el res 2', this.res);
         }else{
+          alert("Error al ingresar los productos");
         console.log('nos van a despedir');
         }
-       
+
       }
-      
   }  
   remProduct(id:any){
     this.total.splice(id, 1);
