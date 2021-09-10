@@ -16,6 +16,7 @@ export class ProductoComponent implements OnInit {
 import { Component } from '@angular/core';
 import { ProductoService } from '../../servicios/api/api-productos.service';
 import {MatDialogModule, MatDialogConfig, MatDialogRef, MatDialog} from '@angular/material/dialog'; 
+import { Router } from '@angular/router';
 //import { PagoComponent } from '../pago/pago.component';
 @Component({
   selector: 'app-producto',
@@ -28,10 +29,12 @@ export class ProductoComponent {
   supermercado:Array<any>=[];
   total:Array<any>=[];
   totalfinal:number=0;
+  pvp:number=0;
   acu:number=0;
   sup_recibido:string="";
   constructor(
-    private taskService:ProductoService//,public dialog: MatDialog
+    private taskService:ProductoService,private router: Router//,public dialog: MatDialog
+    //
   )  {
     this.getAllTasks();
     //const findSup = this.tasks.find((task: { Supermercado_idSupermercado: string; }) => task.Supermercado_idSupermercado == '3');
@@ -51,7 +54,7 @@ export class ProductoComponent {
       console.log('recibir',firstName);
      // console.log('Tareas',this.tasks);
       Object.keys(this.tasks).forEach(key => {
-        if (String(this.tasks[key].Supermercado_idSupermercado) == '${firstName}') {    
+        if (String(this.tasks[key].Supermercado_idSupermercado) == firstName) {    
             this.supermercado.push({
               ...this.tasks[key]
             });
@@ -81,18 +84,18 @@ export class ProductoComponent {
       console.log(this.tasks[indproducto]);
       console.log(typeof this.tasks);
       if(this.tasks[indproducto].stock){
-
+        this.total.push({
+          "id":this.tasks[indproducto].idProducto,
+          "nombre":this.tasks[indproducto].nombre_producto,
+          "unidad":this.tasks[indproducto].unidad,
+          "precio":this.tasks[indproducto].precio,
+          "cantidad":cantidad,
+          //"cantidad":this.tasks[indproducto].stock,     
+          "subtotal":subtotal
+        }); 
+        this.ftotal();
       }
-      this.total.push({
-        "id":this.tasks[indproducto].idProducto,
-        "nombre":this.tasks[indproducto].nombre_producto,
-        "unidad":this.tasks[indproducto].unidad,
-        "precio":this.tasks[indproducto].precio,
-        "cantidad":cantidad,
-        //"cantidad":this.tasks[indproducto].stock,     
-        "subtotal":subtotal
-      }); 
-      this.ftotal();
+      
   }  
   remProduct(id:any){
     this.total.splice(id, 1);
@@ -101,17 +104,27 @@ export class ProductoComponent {
   }
   ftotal(){
       this.totalfinal=0;
-      this.acu=0;
-      this.total.forEach(pro => {  
-        this.acu=parseFloat(pro.subtotal);
-        this.acu.toFixed(2);
-        this.totalfinal += this.acu;
-        this.totalfinal.toFixed(2);
+      this.total.forEach(pro => {   
+        this.totalfinal += pro.subtotal;
   }); 
   }
+  //pvp=
   ngOnInit(): void{
   }
- 
+
+  //mensajeIngreso: any = "";
+  enviarprecio() {
+    console.log("el total final", this.totalfinal);
+        let idS: string = "" + this.totalfinal;
+        sessionStorage.setItem("tpvp", idS);
+        console.log("convertido a string es: " + idS)
+        this.router.navigate(['supermercados']);
+      /*else {
+        this.mensajeIngreso = "NO SE PUEDE INGRESAR A LOS PRODUCTOS";
+      }*/
+    }
+
+  
   /*openDialog() {    
      const dialogConfig = new MatDialogConfig();          
       dialogConfig.disableClose = false;     

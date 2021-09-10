@@ -39,7 +39,7 @@ export class SupermercadosComponent implements OnInit {
         let idS: string = "" + id;
         sessionStorage.setItem("id", idS);
         console.log("convertido a string es: " + idS)
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['producto']);
       } else {
         this.mensajeIngreso = "NO SE PUEDE INGRESAR A LOS PRODUCTOS";
       }
