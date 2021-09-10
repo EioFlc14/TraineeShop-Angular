@@ -2,7 +2,7 @@
 /* BASIC */
 
 html {
-  background-color: #56baed;
+  background-color: #FF6D4D;
 }
 
 body {
@@ -11,7 +11,7 @@ body {
 }
 
 a {
-  color: #92badd;
+  color: #FF6D4D;
   display:inline-block;
   text-decoration: none;
   font-weight: 400;
@@ -19,12 +19,12 @@ a {
 
 h2 {
   text-align: center;
-  font-size: 16px;
+  font-size: 25px;
   font-weight: 600;
   text-transform: uppercase;
   display:inline-block;
   margin: 40px 8px 10px 8px;
-  color: #cccccc;
+  color: #FF6D4D;
 }
 
 
@@ -82,7 +82,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
+  background-color: #FF6D4D;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -104,7 +104,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #39ace7;
+  background-color: #cf3513;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -138,7 +138,7 @@ input[type=password] {
 
 input[type=password]:focus {
   background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #FF6D4D;
 }
 
 input[type=password]:placeholder {
@@ -168,7 +168,7 @@ input[type=text] {
 
 input[type=text]:focus {
   background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #FF6D4D;
 }
 
 input[type=text]:placeholder {
@@ -266,13 +266,13 @@ input[type=text]:placeholder {
   bottom: -10px;
   width: 0;
   height: 2px;
-  background-color: #56baed;
+  background-color: #FF6D4D;
   content: "";
   transition: width 0.2s;
 }
 
 .underlineHover:hover {
-  color: #0d0d0d;
+  color: #F337C2;
 }
 
 .underlineHover:hover:after{

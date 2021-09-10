@@ -10,3 +10,6 @@ tbody tr:nth-child(odd) {
   table {
     background-color: #ffffff;
   }
+  * {
+    -webkit-box-sizing: border-box;
+}
