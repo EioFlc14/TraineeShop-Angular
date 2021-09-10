@@ -41,7 +41,7 @@ export class ProductoComponent {
       this.tasks=tasks;
       console.log('Tareas',this.tasks);
       Object.keys(this.tasks).forEach(key => {
-        if (this.tasks[key].Supermercado_idSupermercado == '4') {    
+        if (this.tasks[key].Supermercado_idSupermercado == '1') {    
             this.supermercado.push({
               ...this.tasks[key]
             });
@@ -69,12 +69,16 @@ export class ProductoComponent {
       console.log([cantidad]);
       console.log(this.tasks[indproducto]);
       console.log(typeof this.tasks);
+      if(this.tasks[indproducto].stock){
+
+      }
       this.total.push({
         "id":this.tasks[indproducto].idProducto,
         "nombre":this.tasks[indproducto].nombre_producto,
         "unidad":this.tasks[indproducto].unidad,
         "precio":this.tasks[indproducto].precio,
-        "cantidad":cantidad,
+       // "cantidad":cantidad,
+        "cantidad":this.tasks[indproducto].stock,
         "subtotal":subtotal,
       });
       this.ftotal();

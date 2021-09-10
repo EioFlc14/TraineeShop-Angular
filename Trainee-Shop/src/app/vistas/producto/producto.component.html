@@ -1,6 +1,7 @@
-<div style="text-align:center">
+<app-header></app-header>
+<div style="text-align:center "> 
     <br>
-    <h1>
+    <h1 style="color: rgb(233, 10, 177)">
       Trainee Shop
     </h1>
     <br>
@@ -9,7 +10,7 @@
       <div class="row align-items-center justify-content-center">
         <div class="col-sm-6 col-md-4" *ngFor="let item of supermercado;let i = index" >
           <div class="card">
-            <img [src]="item.imagen_producto " class="card-img-top" alt="bootstrap">
+            <img [src]="item.imagen_producto" class="card-img-top" alt="bootstrap">
             <div class="card-body">
               <h5 class="card-title">
                 {{ item.nombre_producto }}
@@ -17,7 +18,7 @@
               <p class="card-text">
                 {{ item.precio }} • {{ item.unidad }}  
               </p>
-              <input type="number" class="form-control "  min="1" [max]="item.idProducto" [id]="'cantidad'+i">
+              <input type="number" class="form-control "  min="1" [max]="item.stock" [id]="'cantidad'+i">
               <a class="btn btn-primary btn-sm " href="javascript:void(0)" role="button" (click)="addProduct(item.idProducto,i)">Agregar</a>
             </div>
           </div>
@@ -25,7 +26,6 @@
       </div>
     </div>
     <div class="container">
-        <br>
         <br>
     </div>
     <div class="container">
@@ -64,7 +64,7 @@
           {{ item.subtotal }}
         </div>
         <div class="col-1 border">
-            <button class="btn-primary" (click)="remProduct(i)">Eliminar</button>
+            <button  class="btn-primary" (click)="remProduct(i)">Eliminar</button>
         </div>
       </div>
       <div class="row" *ngIf="totalfinal">
@@ -77,3 +77,4 @@
       </div>
     </div>
   </div>
+  <app-footer></app-footer>

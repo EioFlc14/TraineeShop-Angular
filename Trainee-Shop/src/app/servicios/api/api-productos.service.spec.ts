@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TaskService } from './api-productos.service';
+import { ProductoService } from './api-productos.service';
 
-describe('TaskService', () => {
-  let service: TaskService;
+describe('ProductoService', () => {
+  let service: ProductoService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(TaskService);
+    service = TestBed.inject(ProductoService);
   });
 
   it('should be created', () => {
