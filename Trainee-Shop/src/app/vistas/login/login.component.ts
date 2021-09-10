@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
 
   errorStatus:boolean = false;
   errorMsj:any = "";
+
   ngOnInit(): void {
   }
 
@@ -30,9 +31,12 @@ export class LoginComponent implements OnInit {
     this.api.loginByCedula(form).subscribe(data => {
       //console.log(data);
       let dataResponse:ResponseI = data;
+      //localStorage.removeItem("cedula");
+      sessionStorage.removeItem("cedula");
       if(dataResponse != null){
-        localStorage.setItem("cedula",dataResponse.cedula);
-        this.router.navigate(['dashboard']);
+        //localStorage.setItem("cedula",dataResponse.cedula);
+        sessionStorage.setItem("cedula",dataResponse.cedula);
+        this.router.navigate(['supermercados']);
       }else{
         this.errorStatus = true;
         this.errorMsj = "Usuario o contraseña incorrectos";
