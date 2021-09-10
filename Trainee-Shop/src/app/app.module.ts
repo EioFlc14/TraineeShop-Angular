@@ -13,8 +13,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './plantillas/header/header.component';
 import { FooterComponent } from './plantillas/footer/footer.component';
+import { SupermercadosComponent } from './vistas/supermercados/supermercados.component'
 import { RegistroComponent } from './vistas/registro/registro.component';
-import { SupermercadoComponent } from './vistas/supermercado/supermercado.component';
+import { ProductoComponent } from './vistas/producto/producto.component'
+
 
 @NgModule({
   declarations: [
@@ -22,8 +24,9 @@ import { SupermercadoComponent } from './vistas/supermercado/supermercado.compon
     HeaderComponent,
     FooterComponent,
     routingComponents,
+    SupermercadosComponent,
     RegistroComponent,
-    SupermercadoComponent
+    ProductoComponent
   ],
   imports: [
     BrowserModule,

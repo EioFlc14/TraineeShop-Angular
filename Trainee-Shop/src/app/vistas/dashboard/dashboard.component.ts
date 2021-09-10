@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FacturaService } from 'src/app/servicios/api/factura.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private service: FacturaService, private router: Router,
+    private route: ActivatedRoute) { }
   ngOnInit(): void {
+    //this.route.snapshot.paramMap.get('id')
+    //let id: number = this.route.snapshot.paramMap.get('id');
+    //console.log(id);
   }
+    public mostrarVentas():void {
+      
+    }
+
+  
 
 }
