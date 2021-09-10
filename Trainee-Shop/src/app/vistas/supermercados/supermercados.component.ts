@@ -16,8 +16,13 @@ export class SupermercadosComponent implements OnInit {
   constructor(private service: ApiSupermercadoService) { }
 
   ngOnInit(): void {
-   let total= this.service.listarSupermercados().subscribe(supermercados => this.supermercados = supermercados);
-    console.log(total);
+   let total= this.service.listarSupermercados().subscribe(
+     supermercados => {
+      this.supermercados = supermercados;
+      console.log(this.supermercados)
+     }
+//    console.log(total);
+   );
   }
 
 }
