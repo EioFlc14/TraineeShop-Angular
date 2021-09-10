@@ -16,7 +16,7 @@ export class ProductoComponent implements OnInit {
 import { Component } from '@angular/core';
 import { ProductoService } from '../../servicios/api/api-productos.service';
 import {MatDialogModule, MatDialogConfig, MatDialogRef, MatDialog} from '@angular/material/dialog'; 
-import { PagoComponent } from '../pago/pago.component';
+//import { PagoComponent } from '../pago/pago.component';
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
@@ -102,10 +102,10 @@ export class ProductoComponent {
   onLogin(form:any){
 
   } 
-  openDialog() {    
+  /*openDialog() {    
      const dialogConfig = new MatDialogConfig();          
       dialogConfig.disableClose = false;     
       dialogConfig.autoFocus = true;     
-     const dialogRef = this.dialog.open(PagoComponent, dialogConfig);     }
+     const dialogRef = this.dialog.open(PagoComponent, dialogConfig);     }*/
 }
 
