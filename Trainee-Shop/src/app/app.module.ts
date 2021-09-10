@@ -16,7 +16,8 @@ import { HeaderComponent } from './plantillas/header/header.component';
 import { FooterComponent } from './plantillas/footer/footer.component';
 import { SupermercadosComponent } from './vistas/supermercados/supermercados.component'
 import { RegistroComponent } from './vistas/registro/registro.component';
-import { ProductoComponent } from './vistas/producto/producto.component'
+import { ProductoComponent } from './vistas/producto/producto.component';
+import { PagoComponent } from './vistas/pago/pago.component'
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ProductoComponent } from './vistas/producto/producto.component'
     routingComponents,
     SupermercadosComponent,
     RegistroComponent,
-    ProductoComponent
+    ProductoComponent,
+    PagoComponent
   ],
   imports: [
     BrowserModule,
