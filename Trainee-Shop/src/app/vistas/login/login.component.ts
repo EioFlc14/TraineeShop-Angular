@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       if (dataResponse != null) {
         //localStorage.setItem("cedula",dataResponse.cedula);
         sessionStorage.setItem("cedula", dataResponse.cedula);
-        //this.router.navigate(['dashboard']);
+        this.router.navigate(['supermercados']);
       } else {
         this.errorStatus = true;
         this.errorMsj = "Usuario o contraseña incorrectos";
