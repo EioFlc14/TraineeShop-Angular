@@ -10,7 +10,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SupermercadosComponent } from './vistas/supermercados/supermercados.component'
 import { RegistroComponent } from './vistas/registro/registro.component';
-
+import { ProductoComponent } from './vistas/producto/producto.component'
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
@@ -23,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     routingComponents,
     SupermercadosComponent,
-    RegistroComponent
+    RegistroComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,
