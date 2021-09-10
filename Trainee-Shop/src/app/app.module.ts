@@ -8,7 +8,16 @@ import { FooterComponent } from './plantillas/footer/footer.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+<<<<<<< HEAD
 import { SupermercadosComponent } from './vistas/supermercados/supermercados.component'
+=======
+import { RegistroComponent } from './vistas/registro/registro.component';
+
+import { ButtonModule } from 'primeng/button';
+import {InputTextModule} from 'primeng/inputtext';
+import {ToastModule} from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+>>>>>>> 7db6baa6df7103fe22fa6af38e9af2536351ffc4
 
 @NgModule({
   declarations: [
@@ -16,14 +25,22 @@ import { SupermercadosComponent } from './vistas/supermercados/supermercados.com
     HeaderComponent,
     FooterComponent,
     routingComponents,
+<<<<<<< HEAD
     SupermercadosComponent
+=======
+    RegistroComponent
+>>>>>>> 7db6baa6df7103fe22fa6af38e9af2536351ffc4
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ButtonModule,
+    InputTextModule,
+    ToastModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,9 @@
+<app-header></app-header>
 <div class="wrapper fadeInDown">
+
   <div id="formContent">
     <!-- Tabs Titles -->
-
+    <h2>Bienvenidos a Trainee-Shop</h2>
     <!-- Icon -->
     <div class="fadeIn first">
       <img src="assets/Logo.png" id="icon" alt="User Icon" />
@@ -9,8 +11,8 @@
 
     <!-- Login Form -->
     <form [formGroup]= "loginForm" (ngSubmit)= "onLogin(loginForm.value)">
-      <input type="text" id="login" class="fadeIn second"  placeholder="login" formControlName="usuario">
-      <input type="password" id="password" class="fadeIn third"  placeholder="password" formControlName="password">
+      <input type="text" id="login" class="fadeIn second"  placeholder="Cédula" formControlName="usuario">
+      <input type="password" id="password" class="fadeIn third"  placeholder="Contraseña" formControlName="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 
@@ -20,8 +22,9 @@
     </div>
 
     <div id="formFooter">
-      <a class="underlineHover" href="/dashboard">Registrarse</a>
+      <a class="underlineHover" href="/registro">Registrarse</a>
     </div>
 
   </div>
 </div>
+<app-footer></app-footer>
