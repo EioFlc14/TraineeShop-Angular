@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { responseSupercadoI } from 'src/app/modelos/responseSupercadoI.interface';
 import { Supermercado } from 'src/app/modelos/supermercado';
-import { ApiSupermercadoService } from 'src/app/servicios/api/api-supermercado.service';
+import { ApiSupermercadoService } from '../../servicios/api/api-supermercado.service';
 
 @Component({
   selector: 'app-supermercados',
@@ -20,11 +20,13 @@ export class SupermercadosComponent implements OnInit {
   constructor(private service: ApiSupermercadoService, private router: Router) { }
 
   ngOnInit(): void {
-    let total = this.service.listarSupermercados().subscribe(supermercados => {
-      this.supermercados = supermercados
-      console.log(supermercados);
-    });
-    // this.idSupermecado$.next(this.supermercados);
+   let total= this.service.listarSupermercados().subscribe(
+     supermercados => {
+      this.supermercados = supermercados;
+      console.log(this.supermercados)
+     }
+//    console.log(total);
+   );
   }
   /*getID(): Observable<any> {
     return this.idSupermecado$.asObservable();
