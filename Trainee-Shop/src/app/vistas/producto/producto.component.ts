@@ -14,7 +14,9 @@ export class ProductoComponent implements OnInit {
 
 }*/
 import { Component } from '@angular/core';
-import { ProductoService } from '../../servicios/api/api-productos.service'; 
+import { ProductoService } from '../../servicios/api/api-productos.service';
+import {MatDialogModule, MatDialogConfig, MatDialogRef, MatDialog} from '@angular/material/dialog'; 
+import { PagoComponent } from '../pago/pago.component';
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
@@ -26,8 +28,9 @@ export class ProductoComponent {
   supermercado:Array<any>=[];
   total:Array<any>=[];
   totalfinal:number=0;
+  
   constructor(
-    private taskService:ProductoService
+    private taskService:ProductoService,public dialog: MatDialog
   )  {
     this.getAllTasks();
     //const findSup = this.tasks.find((task: { Supermercado_idSupermercado: string; }) => task.Supermercado_idSupermercado == '3');
@@ -94,5 +97,15 @@ export class ProductoComponent {
       this.totalfinal += pro.subtotal;
   }); 
   }
+  ngOnInit(): void{
+  }
+  onLogin(form:any){
+
+  } 
+  openDialog() {    
+     const dialogConfig = new MatDialogConfig();          
+      dialogConfig.disableClose = false;     
+      dialogConfig.autoFocus = true;     
+     const dialogRef = this.dialog.open(PagoComponent, dialogConfig);     }
 }
 
