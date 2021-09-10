@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Supermercado } from 'src/app/modelos/supermercado';
-import { ApiSupermercadoService } from 'src/app/servicios/api-supermercado.service';
+import { ApiSupermercadoService } from '../../servicios/api/api-supermercado.service';
 
 @Component({
   selector: 'app-supermercados',
@@ -16,8 +16,13 @@ export class SupermercadosComponent implements OnInit {
   constructor(private service: ApiSupermercadoService) { }
 
   ngOnInit(): void {
-   let total= this.service.listarSupermercados().subscribe(supermercados => this.supermercados = supermercados);
-    console.log(total);
+   let total= this.service.listarSupermercados().subscribe(
+     supermercados => {
+      this.supermercados = supermercados;
+      console.log(this.supermercados)
+     }
+//    console.log(total);
+   );
   }
 
 }
