@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { ApiSupermercadoService } from 'src/app/servicios/api/api-supermercado.service';
-import { Chart, registerables } from 'chart.js'; 
+import { Chart, registerables } from 'chart.js';
 import { DashboardService } from 'src/app/servicios/api/api-dashboard.service';
 import { ThisReceiver } from '@angular/compiler';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,14 +15,14 @@ export class DashboardComponent implements OnInit {
 
   chart: any;
 
-  constructor( 
+  constructor(
     private router: Router,
     private supermercadoService :ApiSupermercadoService,
     private _dashboardService : DashboardService
-  ) { 
+  ) {
 
   }
-  
+
     ngOnInit(): void {
       this.chart = document.getElementById('ventas_supermercado');
       Chart.register(...registerables);
@@ -55,7 +56,7 @@ export class DashboardComponent implements OnInit {
                   const b = Math.floor(Math.random() * 255);
                   backgroundColor_.push('rgba('+r+', '+g+', '+b+', 0.5)');
                 }
-                
+
                 new Chart(this.chart,{
                   type: 'bar',
                   data: {
