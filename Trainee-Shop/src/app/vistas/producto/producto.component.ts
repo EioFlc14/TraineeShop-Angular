@@ -29,6 +29,7 @@ export class ProductoComponent {
   total:Array<any>=[];
   totalfinal:number=0;
   acu:number=0;
+  sup_recibido:string="";
   constructor(
     private taskService:ProductoService//,public dialog: MatDialog
   )  {
@@ -42,9 +43,15 @@ export class ProductoComponent {
   getAllTasks(){
     this.taskService.getAllTasks().subscribe(tasks => {
       this.tasks=tasks;
-      console.log('Tareas',this.tasks);
+     // const recibir=sessionStorage.getItem("id");//setItem("id", dataResponse.nombre_supermercado);
+      this.sup_recibido = String(sessionStorage.getItem("id"));
+      let firstName = sessionStorage.getItem("id");
+      console.log(`Hola, mi nombre es ${firstName}`)
+     // console.log('recibir',sessionStorage.getItem("id"));
+      console.log('recibir',firstName);
+     // console.log('Tareas',this.tasks);
       Object.keys(this.tasks).forEach(key => {
-        if (this.tasks[key].Supermercado_idSupermercado == '1') {    
+        if (String(this.tasks[key].Supermercado_idSupermercado) == '${firstName}') {    
             this.supermercado.push({
               ...this.tasks[key]
             });
