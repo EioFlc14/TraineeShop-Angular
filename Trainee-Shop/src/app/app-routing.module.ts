@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'registro', component: RegistroComponent },
   { path: 'supermercados', component: SupermercadosComponent },
-  {path: 'producto', component:ProductoComponent}
+  { path: 'producto', component: ProductoComponent}
 ];
 
 @NgModule({

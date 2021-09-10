@@ -30,7 +30,7 @@ export class ProductoComponent {
   totalfinal:number=0;
   
   constructor(
-    private taskService:ProductoService,public dialog: MatDialog
+    private taskService:ProductoService//,public dialog: MatDialog
   )  {
     this.getAllTasks();
     //const findSup = this.tasks.find((task: { Supermercado_idSupermercado: string; }) => task.Supermercado_idSupermercado == '3');
@@ -99,9 +99,7 @@ export class ProductoComponent {
   }
   ngOnInit(): void{
   }
-  onLogin(form:any){
-
-  } 
+ 
   /*openDialog() {    
      const dialogConfig = new MatDialogConfig();          
       dialogConfig.disableClose = false;     
