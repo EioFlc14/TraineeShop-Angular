@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { ProductoComponent } from '../producto/producto.component';
 @Component({
   selector: 'app-pago',
   templateUrl: './pago.component.html',
@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagoComponent implements OnInit {
 
-  constructor() { }
+  banco = {
+    "idcliente": "",
+    "cuenta": "",
+  }
+
+  confirmContrasena = null;
+
+  constructor(
+   /* private api:ApiRegistroServicio, 
+    private router:Router,
+    private messageService: MessageService*/
+  ) { }
 
   ngOnInit(): void {
   }
+  
 
+
+  
 }

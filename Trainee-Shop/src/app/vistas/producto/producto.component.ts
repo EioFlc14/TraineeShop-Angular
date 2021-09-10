@@ -13,16 +13,18 @@ export class ProductoComponent implements OnInit {
   }
 
 }*/
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductoService } from '../../servicios/api/api-productos.service';
 import {MatDialogModule, MatDialogConfig, MatDialogRef, MatDialog} from '@angular/material/dialog'; 
-//import { PagoComponent } from '../pago/pago.component';
+import { PagoComponent } from '../pago/pago.component';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent {
+  @Output() myEvent = new EventEmitter();
   title = 'frontangular';
   tasks:any;
   supermercado:Array<any>=[];
@@ -30,7 +32,7 @@ export class ProductoComponent {
   totalfinal:number=0;
   
   constructor(
-    private taskService:ProductoService//,public dialog: MatDialog
+    private taskService:ProductoService,private dialog: MatDialog
   )  {
     this.getAllTasks();
     //const findSup = this.tasks.find((task: { Supermercado_idSupermercado: string; }) => task.Supermercado_idSupermercado == '3');
@@ -38,6 +40,15 @@ export class ProductoComponent {
 
   //  console.log('Lista Supermercado id = 3',findSup);
   }
+
+
+
+  openDialog() {    
+    const dialogConfig = new MatDialogConfig();          
+     dialogConfig.disableClose = false;     
+     dialogConfig.autoFocus = true;     
+    const dialogRef = this.dialog.open(PagoComponent, dialogConfig);     
+   }
 
   getAllTasks(){
     this.taskService.getAllTasks().subscribe(tasks => {
@@ -80,9 +91,9 @@ export class ProductoComponent {
         "nombre":this.tasks[indproducto].nombre_producto,
         "unidad":this.tasks[indproducto].unidad,
         "precio":this.tasks[indproducto].precio,
-       // "cantidad":cantidad,
-        "cantidad":this.tasks[indproducto].stock,
-        "subtotal":subtotal,
+        "cantidad":cantidad,
+        //"cantidad":this.tasks[indproducto].stock,
+        "subtotal":subtotal
       });
       this.ftotal();
   }  
@@ -95,15 +106,15 @@ export class ProductoComponent {
       this.totalfinal=0;
       this.total.forEach(pro => {  
       this.totalfinal += pro.subtotal;
+      
   }); 
+  
+    
   }
   ngOnInit(): void{
   }
  
-  /*openDialog() {    
-     const dialogConfig = new MatDialogConfig();          
-      dialogConfig.disableClose = false;     
-      dialogConfig.autoFocus = true;     
-     const dialogRef = this.dialog.open(PagoComponent, dialogConfig);     }*/
+ 
+  
 }
 

@@ -20,6 +20,7 @@ export class ApiRegistroServicio {
     let direccion = this.url + login + cedula;
     return this._http.get<ResponsRegistroI>(direccion);
   }
+  
 
   crearCuenta(registro:any):Observable<any>{
     return this._http.post<any>(this.url,registro);
