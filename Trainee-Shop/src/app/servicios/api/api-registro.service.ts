@@ -9,7 +9,7 @@ import {Observable} from 'rxjs'
 export class ApiRegistroServicio {
 
 
-  url:string = "http://34.227.98.168:4003/clientes/";
+  url:string = "http://54.221.130.211:3306/clientes/";
 
   constructor(
     private _http:HttpClient

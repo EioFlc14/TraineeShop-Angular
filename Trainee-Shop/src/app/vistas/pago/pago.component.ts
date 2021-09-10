@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
 import { ProductoComponent } from '../producto/producto.component';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-pago',
   templateUrl: './pago.component.html',
@@ -55,8 +56,3 @@ export class PagoComponent implements OnInit {
     }
     
   }
-     
-
-
-      
-

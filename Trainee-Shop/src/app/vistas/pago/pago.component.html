@@ -41,49 +41,50 @@
 <!-- <app-header></app-header> -->
 <div class="wrapper fadeInDown">
 
-  <div id="formContent">
-    <!-- Tabs Titles -->
-    <h2>Pagos</h2>
-    
-    <!-- Login Form -->
-    <form #registroForm="ngForm">
-      <div class="container" >
-        Cliente:
-        <label type="text" class="form-control" >{{nombrecli}}</label>
-      </div>
-      <div class="container" >
-          Direccion:
-          <input type="text" class="form-control" placeholder="Ingresar Direccion" required>
-      </div>
-      <div class="container" >
-        precio:
-        <label id="precio" type="text"  class="form-control"  >{{precio}} </label>
-      </div>
-      <div class="container" >
-        Tipo de Pago:
-          <select class="custom-select" >
-            <option value="debito">Debito Bancario</option>
-            <option value="tarjeta">Tarjeta de credito/debito</option>
-          </select>
-      </div>
-      <div class="container" >
-          Seleccionar Banco: 
-            <select class="custom-select">
-              <option value="b1">banco1</option>
-              <option value="b2">banco2</option>
-              <option value="b2">banco3</option>
-            </select>
-      </div>
-      <div class="container" >
-          Ingresar cuenta:
-            <input pInputText id="cuenta" name="cuenta_"type="text" class="form-control" [(ngModel)]="cuenta" placeholder="Titulo" required>
-      </div>
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2>Pagos</h2>
       
-      <div class="container" >
-        <button pButton class="btn btn-danger" (click)="enviar()" >Pagar</button>
-      </div>
-    </form>
-
+      <!-- Login Form -->
+      <form #registroForm="ngForm">
+        <div class="container" >
+          Cliente:
+          <label type="text" class="form-control" >{{nombrecli}}</label>
+        </div>
+        <div class="container" >
+            Direccion:
+            <input type="text" class="form-control" placeholder="Ingresar Direccion" required>
+        </div>
+        <div class="container" >
+          precio:
+          <label id="precio" type="text"  class="form-control"  >{{precio}} </label>
+        </div>
+        <div class="container" >
+          Tipo de Pago:
+            <select class="custom-select" >
+              <option value="debito">Debito Bancario</option>
+              <option value="tarjeta">Tarjeta de credito/debito</option>
+            </select>
+        </div>
+        <div class="container" >
+            Seleccionar Banco: 
+              <select class="custom-select">
+                <option value="b1">banco1</option>
+                <option value="b2">banco2</option>
+                <option value="b2">banco3</option>
+              </select>
+        </div>
+        <div class="container" >
+            Ingresar cuenta:
+              <input pInputText id="cuenta" name="cuenta_"type="text" class="form-control" [(ngModel)]="cuenta" placeholder="Titulo" required>
+        </div>
+        
+        <div class="container" >
+          <button pButton class="btn btn-danger" (click)="enviar()" >Pagar</button>
+        </div>
+      </form>
+  
+    </div>
   </div>
-</div>
-<!-- <app-footer></app-footer> -->
+  <!-- <app-footer></app-footer> -->
+  
