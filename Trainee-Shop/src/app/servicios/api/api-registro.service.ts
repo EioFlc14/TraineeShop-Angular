@@ -1,7 +1,5 @@
 import { ResponsRegistroI } from './../../modelos/response-registro.interface';
 import { Injectable } from '@angular/core';
-
-import {LoginI} from '../../modelos/login.interface';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs'
 
@@ -24,9 +22,7 @@ export class ApiRegistroServicio {
   }
 
   crearCuenta(registro:any):Observable<any>{
-    let direccion = this.url;
-    return this._http.post<any>(direccion,registro);
+    return this._http.post<any>(this.url,registro);
   }
-
 
 }
