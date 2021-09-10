@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'registro', component: RegistroComponent },
   { path: 'supermercados', component: SupermercadosComponent },
-  {path: 'producto', component:ProductoComponent}
+  { path: 'producto', component:ProductoComponent}
 ];
 
 @NgModule({
@@ -23,5 +23,5 @@ const routes: Routes = [
 export class AppRoutingModule {
 
 }
-export const routingComponents = [LoginComponent, DashboardComponent, SupermercadosComponent, RegistroComponent]
+export const routingComponents = [LoginComponent, DashboardComponent, SupermercadosComponent, RegistroComponent,ProductoComponent]
 
