@@ -13,26 +13,28 @@ export class ProductoComponent implements OnInit {
   }
 
 }*/
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductoService } from '../../servicios/api/api-productos.service';
 import {MatDialogModule, MatDialogConfig, MatDialogRef, MatDialog} from '@angular/material/dialog'; 
-import { PagoComponent } from '../pago/pago.component';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { Router } from '@angular/router';
+//import { PagoComponent } from '../pago/pago.component';
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent {
-  @Output() myEvent = new EventEmitter();
   title = 'frontangular';
   tasks:any;
   supermercado:Array<any>=[];
   total:Array<any>=[];
   totalfinal:number=0;
-  
+  pvp:number=0;
+  acu:number=0;
+  sup_recibido:string="";
   constructor(
-    private taskService:ProductoService,private dialog: MatDialog
+    private taskService:ProductoService,private router: Router//,public dialog: MatDialog
+    //
   )  {
     this.getAllTasks();
     //const findSup = this.tasks.find((task: { Supermercado_idSupermercado: string; }) => task.Supermercado_idSupermercado == '3');
@@ -41,21 +43,18 @@ export class ProductoComponent {
   //  console.log('Lista Supermercado id = 3',findSup);
   }
 
-
-
-  openDialog() {    
-    const dialogConfig = new MatDialogConfig();          
-     dialogConfig.disableClose = false;     
-     dialogConfig.autoFocus = true;     
-    const dialogRef = this.dialog.open(PagoComponent, dialogConfig);     
-   }
-
   getAllTasks(){
     this.taskService.getAllTasks().subscribe(tasks => {
       this.tasks=tasks;
-      console.log('Tareas',this.tasks);
+     // const recibir=sessionStorage.getItem("id");//setItem("id", dataResponse.nombre_supermercado);
+      this.sup_recibido = String(sessionStorage.getItem("id"));
+      let firstName = sessionStorage.getItem("id");
+      console.log(`Hola, mi nombre es ${firstName}`)
+     // console.log('recibir',sessionStorage.getItem("id"));
+      console.log('recibir',firstName);
+     // console.log('Tareas',this.tasks);
       Object.keys(this.tasks).forEach(key => {
-        if (this.tasks[key].Supermercado_idSupermercado == '1') {    
+        if (String(this.tasks[key].Supermercado_idSupermercado) == firstName) {    
             this.supermercado.push({
               ...this.tasks[key]
             });
@@ -78,24 +77,25 @@ export class ProductoComponent {
   addProduct(idProducto: any,index: any){
       console.log([idProducto,index]);
       const cantidad:number = parseInt((<HTMLInputElement>document.getElementById(`cantidad${index}`)).value);
+     // let cantidad:any = Object.keys(this.tasks).find(x => this.tasks[x]. == idProducto);
       let indproducto:any = Object.keys(this.tasks).find(x => this.tasks[x].idProducto == idProducto);
       let subtotal=cantidad*this.tasks[indproducto].precio;
       console.log([cantidad]);
       console.log(this.tasks[indproducto]);
       console.log(typeof this.tasks);
       if(this.tasks[indproducto].stock){
-
+        this.total.push({
+          "id":this.tasks[indproducto].idProducto,
+          "nombre":this.tasks[indproducto].nombre_producto,
+          "unidad":this.tasks[indproducto].unidad,
+          "precio":this.tasks[indproducto].precio,
+          "cantidad":cantidad,
+          //"cantidad":this.tasks[indproducto].stock,     
+          "subtotal":subtotal
+        }); 
+        this.ftotal();
       }
-      this.total.push({
-        "id":this.tasks[indproducto].idProducto,
-        "nombre":this.tasks[indproducto].nombre_producto,
-        "unidad":this.tasks[indproducto].unidad,
-        "precio":this.tasks[indproducto].precio,
-        "cantidad":cantidad,
-        //"cantidad":this.tasks[indproducto].stock,
-        "subtotal":subtotal
-      });
-      this.ftotal();
+      
   }  
   remProduct(id:any){
     this.total.splice(id, 1);
@@ -104,17 +104,23 @@ export class ProductoComponent {
   }
   ftotal(){
       this.totalfinal=0;
-      this.total.forEach(pro => {  
-      this.totalfinal += pro.subtotal;
-      
+      this.total.forEach(pro => {   
+        this.totalfinal += pro.subtotal;
   }); 
-  
-    
   }
+  //pvp=
   ngOnInit(): void{
   }
- 
- 
-  
+
+  //mensajeIngreso: any = "";
+  enviarprecio() {
+    console.log("el total final", this.totalfinal);
+        let idS: string = "" + this.totalfinal;
+        sessionStorage.setItem("tpvp", idS);
+        console.log("convertido a string es: " + idS)
+        this.router.navigate(['pago']);
+      
+    }
+
 }
 

@@ -18,7 +18,7 @@
               <p class="card-text">
                 {{ item.precio }} • {{ item.unidad }}  
               </p>
-              <input type="number" class="form-control "  min="1" [max]="item.stock" [id]="'cantidad'+i">
+              <input type="number" class="form-control " min="1" [max]="item.stock" [id]="'cantidad'+i">
               <a class="btn btn-primary btn-sm " href="javascript:void(0)" role="button" (click)="addProduct(item.idProducto,i)">Agregar</a>
             </div>
           </div>
@@ -39,10 +39,10 @@
       <div class="col-1 border">
         Precio
     </div>
-    <div class="col-2 border">
+    <div class="col-1 border">
       Cantidad
   </div>
-  <div class="col-2 border">
+  <div class="col-1 border">
     Subtotal
   </div>
       </div>
@@ -57,18 +57,19 @@
         <div class="col-1 border"> 
           {{ item.precio }}
         </div>
-        <div class="col-2 border"> 
+        <div class="col-1 border"> 
           {{ item.cantidad }}
         </div>
-        <div class="col-2 border"> 
+        <div class="col-1 border"> 
           {{ item.subtotal }}
         </div>
-        <div class="col-1 border">
-            <button  class="btn-primary" (click)="remProduct(i)">Eliminar</button>
+        <div class="col-3">
+            <button  class="btn-primary border-3 btn-sm" (click)="remProduct(i)">Eliminar</button>
         </div>
+       
       </div>
       <div class="row" *ngIf="totalfinal">
-          <div class="col-7 border">
+          <div class="col-6 border">
             Total
           </div>
           <div class="col-2 border">
@@ -82,6 +83,10 @@
             </button>
         </div>
 
+          <div class="col-1 border">
+            {{ totalfinal | number: '1.1-2' }}
+          </div>
+        </div>
      
     </div>
   </div>

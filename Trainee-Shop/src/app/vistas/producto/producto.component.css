@@ -109,3 +109,16 @@ h6 {
  margin-top: 20px;
 
 }
+.btn-second{
+    border-color:#F337C2;
+    background-color:#F337C2;
+    text-align: center!important;
+    margin-top: 20px;
+    color: black;
+    margin-left: 25px;
+    line-height: 30px;
+    width: 150px;
+    font-family: "Raleway", sans-serif;
+    margin-top: 20px;
+   
+   }

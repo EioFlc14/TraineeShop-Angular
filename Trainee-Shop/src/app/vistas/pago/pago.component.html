@@ -53,15 +53,15 @@
       </div>
       <div class="container" >
           Direccion:
-          <input type="text" class="form-control" placeholder="Ingresar Direccion">
+          <input type="text" class="form-control" placeholder="Ingresar Direccion" required>
       </div>
       <div class="container" >
         precio:
-        <input type="text" class="form-control" readonly=false >
-    </div>
+        <input type="text" class="form-control" >
+      </div>
       <div class="container" >
         Tipo de Pago:
-          <select class="custom-select">
+          <select class="custom-select" >
             <option value="debito">Debito Bancario</option>
             <option value="tarjeta">Tarjeta de credito/debito</option>
           </select>
@@ -69,30 +69,23 @@
       <div class="container" >
           Seleccionar Banco: 
             <select class="custom-select">
-              <option value="b1">b1</option>
-              <option value="b2">b2</option>
+              <option value="b1">banco1</option>
+              <option value="b2">banco2</option>
+              <option value="b2">banco3</option>
             </select>
       </div>
       <div class="container" >
           Ingresar cuenta:
-            <input type="text" class="form-control" placeholder="Titulo">
+            <input id="cuenta" type="text" class="form-control" placeholder="Titulo" required>
+      </div>
+      <div class="container" >
+        <button type="button" class="btn btn-light">Close</button>
+      </div>
+      <div class="container" >
+        <button  class="btn btn-danger">Save</button>
       </div>
     </form>
 
   </div>
 </div>
 <app-footer></app-footer>
-
-<script type="text/javascript">
-  // Creamos la variable 'app' y le damos el nombre del modulo
-  var app = angular.module('listarRegistros', []);
-
-  // Creamos el controllador 'postresController'
-  app.controller('postresController', function($scope, $http) {
-
-  // Mediante el servicio $http hacemos una petición 'get' a un archivo PHP que nos
-    // devuelve los registros de la base de datos en formato JSON
-  $http.get("archivo.php")
-    .then(function (response) {$scope.names = response.data.records;});
-  });       
-</script>
