@@ -28,7 +28,7 @@ export class ProductoComponent {
   supermercado:Array<any>=[];
   total:Array<any>=[];
   totalfinal:number=0;
-  
+  acu:number=0;
   constructor(
     private taskService:ProductoService//,public dialog: MatDialog
   )  {
@@ -94,8 +94,12 @@ export class ProductoComponent {
   }
   ftotal(){
       this.totalfinal=0;
+      this.acu=0;
       this.total.forEach(pro => {  
-      this.totalfinal += pro.subtotal;
+        this.acu=parseFloat(pro.subtotal);
+        this.acu.toFixed(2);
+        this.totalfinal += this.acu;
+        this.totalfinal.toFixed(2);
   }); 
   }
   ngOnInit(): void{
