@@ -84,16 +84,23 @@ export class ProductoComponent {
       console.log(this.tasks[indproducto]);
       console.log(typeof this.tasks);
       if(this.tasks[indproducto].stock){
-        this.total.push({
-          "id":this.tasks[indproducto].idProducto,
-          "nombre":this.tasks[indproducto].nombre_producto,
-          "unidad":this.tasks[indproducto].unidad,
-          "precio":this.tasks[indproducto].precio,
-          "cantidad":cantidad,
-          //"cantidad":this.tasks[indproducto].stock,     
-          "subtotal":subtotal
-        }); 
-        this.ftotal();
+        console.log('esta es la cantidad',cantidad);
+        console.log('este es el stock',parseInt(this.tasks[indproducto].stock));
+        if(cantidad>0 && cantidad <= parseInt(this.tasks[indproducto].stock)){
+          this.total.push({
+            "id":this.tasks[indproducto].idProducto,
+            "nombre":this.tasks[indproducto].nombre_producto,
+            "unidad":this.tasks[indproducto].unidad,
+            "precio":this.tasks[indproducto].precio,
+            "cantidad":cantidad,
+            //"cantidad":this.tasks[indproducto].stock,     
+            "subtotal":subtotal
+          }); 
+          this.ftotal();
+        }else{
+        console.log('nos van a despedir');
+        }
+       
       }
       
   }  

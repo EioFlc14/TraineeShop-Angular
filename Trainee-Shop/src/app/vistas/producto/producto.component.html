@@ -61,7 +61,7 @@
           {{ item.cantidad }}
         </div>
         <div class="col-1 border"> 
-          {{ item.subtotal }}
+          {{ item.subtotal | number: '1.1-2' }}
         </div>
         <div class="col-3">
             <button  class="btn-primary border-3 btn-sm" (click)="remProduct(i)">Eliminar</button>
