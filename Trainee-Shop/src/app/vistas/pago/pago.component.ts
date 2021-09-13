@@ -40,19 +40,21 @@ export class PagoComponent implements OnInit {
 
 
   getAllTasks(){
-       
+
     }
 
     enviar(){
-      let idc: string = "" + this.ced;
-      sessionStorage.setItem("cedula", idc);
-      let cuenta: string = "" + this.cuenta;
-      sessionStorage.setItem("cuenta", cuenta);
-      let idSupermercado = sessionStorage.getItem("id");
-      console.log("cuenta",cuenta);
-      console.log("idc",idc);
+      // let idc: string = "" + this.ced;
+      // sessionStorage.setItem("cedula", idc);
+      // let cuenta: string = "" + this.cuenta;
+      // sessionStorage.setItem("cuenta", cuenta);
+      // let idSupermercado = sessionStorage.getItem("id");
+      // console.log("cuenta",cuenta);
+      // console.log("idc",idc);
+
+      //this.router.navigate(['login']);
 
 
     }
-    
+
   }
