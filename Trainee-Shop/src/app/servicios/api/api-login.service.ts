@@ -11,7 +11,6 @@ import { timeout, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiLoginService {
-
   url:string = "http://54.221.130.211:4005/clientes/login/";
 
   constructor(private http:HttpClient) { }

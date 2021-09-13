@@ -1,20 +1,24 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule, routingComponents } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './plantillas/header/header.component';
-import { FooterComponent } from './plantillas/footer/footer.component';
-
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SupermercadosComponent } from './vistas/supermercados/supermercados.component'
-import { RegistroComponent } from './vistas/registro/registro.component';
-import { ProductoComponent } from './vistas/producto/producto.component'
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ChartModule } from 'primeng/chart';
+
+// Components
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './plantillas/header/header.component';
+import { FooterComponent } from './plantillas/footer/footer.component';
+import { SupermercadosComponent } from './vistas/supermercados/supermercados.component'
+import { RegistroComponent } from './vistas/registro/registro.component';
+import { ProductoComponent } from './vistas/producto/producto.component';
+import { PagoComponent } from './vistas/pago/pago.component'
+
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     routingComponents,
     SupermercadosComponent,
     RegistroComponent,
-    ProductoComponent
+    ProductoComponent,
+    PagoComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +40,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ButtonModule,
     InputTextModule,
     ToastModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule,
+    ChartModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA]
+  
 })
 export class AppModule { }

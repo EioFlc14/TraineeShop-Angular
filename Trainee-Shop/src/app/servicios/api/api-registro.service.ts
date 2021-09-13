@@ -9,7 +9,7 @@ import {Observable} from 'rxjs'
 export class ApiRegistroServicio {
 
 
-  url:string = "http://34.227.98.168:4003/clientes/";
+  url:string = "http://54.221.130.211:4003/clientes/";
 
   constructor(
     private _http:HttpClient
@@ -20,6 +20,7 @@ export class ApiRegistroServicio {
     let direccion = this.url + login + cedula;
     return this._http.get<ResponsRegistroI>(direccion);
   }
+
 
   crearCuenta(registro:any):Observable<any>{
     return this._http.post<any>(this.url,registro);
