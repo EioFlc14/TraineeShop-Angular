@@ -16,7 +16,7 @@
                 {{ item.nombre_producto }}
               </h5>
               <p class="card-text">
-                {{ item.precio }} • {{ item.unidad }}  
+                $ {{ item.precio }} • {{ item.unidad }}  
               </p>
               <input type="number" class="form-control " min="1" [max]="item.stock" [id]="'cantidad'+i">
               <a class="btn btn-primary btn-sm " href="javascript:void(0)" role="button" (click)="addProduct(item.idProducto,i)">Agregar</a>
@@ -86,6 +86,6 @@
         </div>
     </div>
   </div>
-  <!-- <app-footer></app-footer> -->
+  <app-footer></app-footer>
 
   

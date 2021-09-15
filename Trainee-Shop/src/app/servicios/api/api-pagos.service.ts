@@ -10,6 +10,7 @@ export class ApiPagosServicio {
 
 
   url:string = "http://3.135.239.12:5000/users?token="+"000"+"-";
+  url2:string = "http://3.135.239.12:5000/pays?token="+"000"+"-";
 
   constructor(
     private _http:HttpClient
@@ -21,6 +22,9 @@ export class ApiPagosServicio {
   }
 
   pagarbanco(token:string,totalvalor:string){
+    var direccion= this.url2+token+"-"+totalvalor;
+    return this._http.get<any>(direccion);
+
 
   }
 
@@ -28,6 +32,8 @@ export class ApiPagosServicio {
 
 
 }
+
+//http://3.135.239.12:5000/pays?token=000-30dea07bcb0b8e8b1a21facb4a9c4c2f-0.01
 
 //http://3.135.239.12:5000/users?token=000-1234567890-5555555555
 

@@ -125,15 +125,17 @@ export class RegistroComponent implements OnInit {
         } else {
           this.api.crearCuenta(registroInsert).subscribe(
             insercionRgistro => {
-              this.router.navigate(['login']);
               this.messageService.add({key: 'myKey1', severity:'success', summary: 'Cuenta creada exitosamente'});
+              setInterval(() => {
+                this.router.navigate(['login']);
+              }, 2000);
             },
             error => {
               if(error.status == 500){
                 this.messageService.add({key: 'myKey1', severity:'error', summary: 'Error al crear la cuenta, cédula o email ya registrados.'});
               }
             }
-          )
+          );          
         }
       }
     )

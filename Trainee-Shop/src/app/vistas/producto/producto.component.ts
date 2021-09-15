@@ -70,7 +70,7 @@ export class ProductoComponent {
           this.ftotal();
          }
         }else{
-          alert("Error al ingresar los productos !!!");
+          alert("Error al ingresar los productos");
         }
       }
   }  

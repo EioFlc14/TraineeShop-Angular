@@ -46,14 +46,35 @@ export class PagoComponent implements OnInit {
       let cuenta: string = "" + this.cuenta;
       sessionStorage.setItem("cuenta", cuenta);
       
+
+      
       this.pagoservicio.validarcuenta(idc,cuenta).subscribe(
         respuestaverificacion => {
-          if (respuestaverificacion.status == 200) {
+          
+          console.log(respuestaverificacion.token);
+          let token=respuestaverificacion.token
+          this.pagoservicio.pagarbanco(token,String(this.precio)).subscribe(
+            repuestapago => {
+              console.log("aquiiii",repuestapago);
+              if (repuestapago.code==0) {
+                
+                  alert('pago realizado exitosamente');
+                } else {
+                  alert('error al realizar pago');
+                }
+              },
+              errorpago=>{
+                console.error(errorpago);
+              }
+              )
+            },
+        error=>{
+          if(error.status == 404) {
            
-              alert('realizando verificacion');
-            } else {
-              alert('no esta registrado en el banco');
-            
+            alert('error 404');
+          } else {
+            alert('error 404 negativo');
+          
           }
         }
 
