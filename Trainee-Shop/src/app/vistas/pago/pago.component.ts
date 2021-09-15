@@ -12,14 +12,16 @@ import { ApiPagosServicio } from 'src/app/servicios/api/api-pagos.service';
 export class PagoComponent implements OnInit {
 
   
+  tcuenta:string[] = ["debito bancario","tarjeta de credito"];
   precio:number= 0;
   nombrecli:string="";
   ced:string="";
   cuenta:string="";
+  opcionSeleccionado:string= "0";
+  verSeleccion:string="";
 
-
-  constructor(private router: Router,private http: HttpClient,private pagoservicio:ApiPagosServicio) {
-    //this.getAllTasks
+  constructor(private router: Router,private http: HttpClient,private pagoservicio:ApiPagosServicio) { 
+       
    }
 
   ngOnInit(
@@ -36,7 +38,11 @@ export class PagoComponent implements OnInit {
 
       }
 
-
+      capturar() {
+        // Pasamos el valor seleccionado a la variable verSeleccion
+        this.verSeleccion = this.opcionSeleccionado;
+        console.log("javier seleccionaste" ,this.verSeleccion,this.opcionSeleccionado );
+    }
     enviar(){
 
       //this.router.navigate(['login']);
@@ -45,6 +51,7 @@ export class PagoComponent implements OnInit {
       sessionStorage.setItem("cedula", idc);
       let cuenta: string = "" + this.cuenta;
       sessionStorage.setItem("cuenta", cuenta);
+      let idSupermercado = sessionStorage.getItem("id");
       
 
       
@@ -79,12 +86,7 @@ export class PagoComponent implements OnInit {
         }
 
       )
-
-      /*let idSupermercado = sessionStorage.getItem("id");
-      console.log("cuenta",cuenta);
-      console.log("idc",idc);*/
-
-
     }
+    
 
   }

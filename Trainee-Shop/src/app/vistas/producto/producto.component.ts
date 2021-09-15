@@ -101,19 +101,7 @@ export class ProductoComponent {
       sessionStorage.setItem("tpvp", idS);
       console.log("convertido a string es: " + idS)
     }
-    gopagos(){
-  
+    
       
-      let fac = {
-  
-      "cantidad": "",
-      "valor": "",
-      "producto_idproducto": "",
-      "factura_idfactura": "",
-      "iddetalle":"",
-      }
-      let cantidadf =  String(sessionStorage.getItem("cantf"));
-      console.log(`cantidafactura ${cantidadf}`)
-      
-    }
+    
   }
