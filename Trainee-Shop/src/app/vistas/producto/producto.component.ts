@@ -17,6 +17,7 @@ export class ProductoComponent {
   acu:number=0;
   res:number=0;
   sup_recibido:string="";
+  confirmar: boolean=true;
   constructor(
     private taskService:ProductoService,private router: Router
   )  {
@@ -48,12 +49,16 @@ export class ProductoComponent {
       console.log(this.tasks[indproducto]);
       console.log(typeof this.tasks);
       if(this.tasks[indproducto].stock){
-        console.log('esta es la cantidad',cantidad);
-        console.log('este es el stock',parseInt(this.tasks[indproducto].stock));
-        console.log('esta es el res 3',this.res);
-        if((cantidad>0) && (cantidad <= parseInt(this.tasks[indproducto].stock))   ){
+        if((cantidad>0) && (cantidad <= parseInt(this.tasks[indproducto].stock)) ){
           this.res=parseInt(this.tasks[indproducto].stock);
           console.log('esto tiene el res',this.res);
+          this.res=this.res-cantidad;
+          console.log('esto tiene el res 2',this.res);
+        //cantidad=this.res; 
+          if(this.res==0){
+            alert("No existe el stock solicitado !!!");
+          }
+         else{
           this.total.push({
             "id":this.tasks[indproducto].idProducto,
             "nombre":this.tasks[indproducto].nombre_producto,
@@ -63,13 +68,9 @@ export class ProductoComponent {
             "subtotal":subtotal
           }); 
           this.ftotal();
-          this.res=this.res-cantidad;
-          cantidad=this.res;
-          console.log('esto tiene el cantidad con la res',cantidad);
-          console.log('esto es el res 2', this.res);
+         }
         }else{
-          alert("Error al ingresar los productos");
-        console.log('nos van a despedir');
+          alert("Error al ingresar los productos !!!");
         }
       }
   }  
