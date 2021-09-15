@@ -36,6 +36,7 @@ export class PagoComponent implements OnInit {
       }
 
 
+<<<<<<< HEAD
     enviar(){
 
       this.router.navigate(['login']);
@@ -47,8 +48,24 @@ export class PagoComponent implements OnInit {
       let idSupermercado = sessionStorage.getItem("id");
       console.log("cuenta",cuenta);
       console.log("idc",idc);*/
+=======
+  getAllTasks(){
+
+    }
+
+    enviar(){
+      // let idc: string = "" + this.ced;
+      // sessionStorage.setItem("cedula", idc);
+      // let cuenta: string = "" + this.cuenta;
+      // sessionStorage.setItem("cuenta", cuenta);
+      // let idSupermercado = sessionStorage.getItem("id");
+      // console.log("cuenta",cuenta);
+      // console.log("idc",idc);
+
+      //this.router.navigate(['login']);
+>>>>>>> 7db1133c453d2202c9454e8e4d7c6aefb0d390af
 
 
     }
-    
+
   }
