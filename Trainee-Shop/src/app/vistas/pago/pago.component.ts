@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ProductoComponent } from '../producto/producto.component';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ApiPagosServicio } from 'src/app/servicios/api/api-pagos.service';
 
 @Component({
   selector: 'app-pago',
@@ -17,7 +18,7 @@ export class PagoComponent implements OnInit {
   cuenta:string="";
 
 
-  constructor(private router: Router,private http: HttpClient) {
+  constructor(private router: Router,private http: HttpClient,private pagoservicio:ApiPagosServicio) {
     //this.getAllTasks
    }
 
@@ -36,34 +37,31 @@ export class PagoComponent implements OnInit {
       }
 
 
-<<<<<<< HEAD
     enviar(){
 
-      this.router.navigate(['login']);
+      //this.router.navigate(['login']);
 
-     /* let idc: string = "" + this.ced;
+      let idc: string = "" + this.ced;
       sessionStorage.setItem("cedula", idc);
       let cuenta: string = "" + this.cuenta;
       sessionStorage.setItem("cuenta", cuenta);
-      let idSupermercado = sessionStorage.getItem("id");
+      
+      this.pagoservicio.validarcuenta(idc,cuenta).subscribe(
+        respuestaverificacion => {
+          if (respuestaverificacion.status == 200) {
+           
+              alert('realizando verificacion');
+            } else {
+              alert('no esta registrado en el banco');
+            
+          }
+        }
+
+      )
+
+      /*let idSupermercado = sessionStorage.getItem("id");
       console.log("cuenta",cuenta);
       console.log("idc",idc);*/
-=======
-  getAllTasks(){
-
-    }
-
-    enviar(){
-      // let idc: string = "" + this.ced;
-      // sessionStorage.setItem("cedula", idc);
-      // let cuenta: string = "" + this.cuenta;
-      // sessionStorage.setItem("cuenta", cuenta);
-      // let idSupermercado = sessionStorage.getItem("id");
-      // console.log("cuenta",cuenta);
-      // console.log("idc",idc);
-
-      //this.router.navigate(['login']);
->>>>>>> 7db1133c453d2202c9454e8e4d7c6aefb0d390af
 
 
     }
