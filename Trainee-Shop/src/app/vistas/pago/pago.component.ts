@@ -10,10 +10,7 @@ import { Router } from '@angular/router';
 })
 export class PagoComponent implements OnInit {
 
-  banco = {
-    "idcliente": "",
-    "cuenta": "",
-  }
+  
   precio:number= 0;
   nombrecli:string="";
   ced:string="";
@@ -39,18 +36,17 @@ export class PagoComponent implements OnInit {
       }
 
 
-  getAllTasks(){
-       
-    }
-
     enviar(){
-      let idc: string = "" + this.ced;
+
+      this.router.navigate(['login']);
+
+     /* let idc: string = "" + this.ced;
       sessionStorage.setItem("cedula", idc);
       let cuenta: string = "" + this.cuenta;
       sessionStorage.setItem("cuenta", cuenta);
       let idSupermercado = sessionStorage.getItem("id");
       console.log("cuenta",cuenta);
-      console.log("idc",idc);
+      console.log("idc",idc);*/
 
 
     }

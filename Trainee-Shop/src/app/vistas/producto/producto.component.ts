@@ -33,15 +33,14 @@ export class ProductoComponent {
   acu:number=0;
   res:number=0;
   sup_recibido:string="";
+ // cant: String='';
+
+
   constructor(
     private taskService:ProductoService,private router: Router,public dialog: MatDialog//,public dialog: MatDialog
     //
   ) {
     this.getAllTasks();
-    //const findSup = this.tasks.find((task: { Supermercado_idSupermercado: string; }) => task.Supermercado_idSupermercado == '3');
-   
-
-  //  console.log('Lista Supermercado id = 3',findSup);
   }
 
   getAllTasks(){
@@ -64,17 +63,10 @@ export class ProductoComponent {
     });
     console.log("Listado de los supermercado que son iguales a 3",this.supermercado);
     
-      /*this.tasks.forEach((task: any) => {
-        console.log(task);
-      const findSup = task.find((obj: { Supermercado_idSupermercado: string; }) => obj.Supermercado_idSupermercado == '3');
-      if (findSup) {
-      this.supermercado.push({
-        ...task
-      });
-    }
-  });*/
+     
     });
   }
+
   addProduct(idProducto: any,index: any){
       console.log([idProducto,index]);
       let cantidad:number = parseInt((<HTMLInputElement>document.getElementById(`cantidad${index}`)).value);
@@ -92,19 +84,21 @@ export class ProductoComponent {
           this.res=parseInt(this.tasks[indproducto].stock);
           console.log('esto tiene el res',this.res);
           this.total.push({
-            "id":this.tasks[indproducto].idProducto,
+            
             "nombre":this.tasks[indproducto].nombre_producto,
             "unidad":this.tasks[indproducto].unidad,
             "precio":this.tasks[indproducto].precio,
-            "cantidad":cantidad,
-            //"cantidad":this.tasks[indproducto].stock,     
+            "cantidad":cantidad,   
             "subtotal":subtotal
           }); 
+          let cant: string = "" + cantidad;
+          sessionStorage.setItem("cantf", cant);
           this.ftotal();
           this.res=this.res-cantidad;
           cantidad=this.res;
           console.log('esto tiene el cantidad con la res',cantidad);
           console.log('esto es el res 2', this.res);
+          console.log('javi',this.total);
         }else{
           alert("Error al ingresar los productos");
         console.log('nos van a despedir');
@@ -124,23 +118,28 @@ export class ProductoComponent {
   }); 
   }
   //pvp=
-  ngOnInit(): void{
-  }
+  ngOnInit(): void{ }
 
-  openDialog() {
-    let idS: string = "" + this.totalfinal;
+  irpagos(){
+    this.router.navigate(['/pago']);
+   /* let idS: string = "" + this.totalfinal;
     sessionStorage.setItem("tpvp", idS);
-    console.log("convertido a string es: " + idS)
-    // this.router.navigate(['pago']);
-    const dialogConfig = new MatDialogConfig();
+    console.log("convertido a string es: " + idS)*/
+  }
+  gopagos(){
+
     
+    let fac = {
 
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-
-    const dialogRef = this.dialog.open(PagoComponent, dialogConfig);
-
-
+    "cantidad": "",
+    "valor": "",
+    "producto_idproducto": "",
+    "factura_idfactura": "",
+    "iddetalle":"",
+    }
+    let cantidadf =  String(sessionStorage.getItem("cantf"));
+    console.log(`cantidafactura ${cantidadf}`)
+    
   }
 }
 
