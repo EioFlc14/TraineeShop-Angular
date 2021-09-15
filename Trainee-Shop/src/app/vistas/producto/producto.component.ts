@@ -95,4 +95,3 @@ export class ProductoComponent {
         this.router.navigate(['supermercados']);
     }
 }
-
