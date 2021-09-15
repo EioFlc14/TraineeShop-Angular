@@ -72,22 +72,15 @@
           <div class="col-6 border">
             Total
           </div>
-          <div class="col-2 border">
-              {{totalfinal}}
-             
+          <div class="col-1 border">
+            {{ totalfinal | number: '1.1-2' }}
           </div>
-          
         <div>
             <button class="btn-primary" (click)="openDialog()">
             Comprar
             </button>
         </div>
-
-          <div class="col-1 border">
-            {{ totalfinal | number: '1.1-2' }}
-          </div>
         </div>
-     
     </div>
   </div>
   <!-- <app-footer></app-footer> -->
