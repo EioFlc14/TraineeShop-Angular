@@ -11,7 +11,8 @@ import { timeout, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiLoginService {
-  url:string = "http://54.221.130.211:4005/clientes/login/";
+  //url:string = "http://54.221.130.211:4005/clientes/login/";
+  url:string = "http://a3d60ef8193dd4fd68ff8781f2c4e0be-1837864183.us-west-1.elb.amazonaws.com:4005/clientes/login/";
 
   constructor(private http:HttpClient) { }
   errorMsj:any = "";

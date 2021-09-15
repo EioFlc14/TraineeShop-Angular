@@ -69,7 +69,6 @@ export class ProductoComponent {
           console.log('esto es el res 2', this.res);
         }else{
           alert("Error al ingresar los productos");
-        console.log('nos van a despedir');
         }
       }
   }  

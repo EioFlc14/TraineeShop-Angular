@@ -8,20 +8,18 @@ import {Observable} from 'rxjs'
 })
 export class ApiRegistroServicio {
 
-
-  url:string = "http://54.221.130.211:3306/clientes/";
+  url:string = "http://adaeb302ec9cf4ef7987e8adff15d26f-8798774.us-west-1.elb.amazonaws.com:4003/clientes/";
 
   constructor(
     private _http:HttpClient
     ) { }
 
   getByCedula(cedula:string):Observable<ResponsRegistroI>{
-    var login = "login/";
-    let direccion = this.url + login + cedula;
+    let direccion = this.url + 'login/' + cedula;
     return this._http.get<ResponsRegistroI>(direccion);
   }
 
-  crearCuenta(registro:any):Observable<any>{
+  crearCuenta(registro:any):Observable<any>{ 
     return this._http.post<any>(this.url,registro);
   }
 
