@@ -1,23 +1,7 @@
-/*import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-producto',
-  templateUrl: './producto.component.html',
-  styleUrls: ['./producto.component.css']
-})
-export class ProductoComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}*/
 import { Component } from '@angular/core';
 import { ProductoService } from '../../servicios/api/api-productos.service';
 import {MatDialogModule, MatDialogConfig, MatDialogRef, MatDialog} from '@angular/material/dialog'; 
 import { Router } from '@angular/router';
-import { PagoComponent } from '../pago/pago.component';
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
@@ -33,77 +17,61 @@ export class ProductoComponent {
   acu:number=0;
   res:number=0;
   sup_recibido:string="";
- // cant: String='';
-
-
+  confirmar: boolean=true;
   constructor(
-    private taskService:ProductoService,private router: Router,public dialog: MatDialog//,public dialog: MatDialog
-    //
-  ) {
+    private taskService:ProductoService,private router: Router
+  )  {
     this.getAllTasks();
   }
-
   getAllTasks(){
     this.taskService.getAllTasks().subscribe(tasks => {
       this.tasks=tasks;
-     // const recibir=sessionStorage.getItem("id");//setItem("id", dataResponse.nombre_supermercado);
       this.sup_recibido = String(sessionStorage.getItem("id"));
       let firstName = sessionStorage.getItem("id");
       console.log(`Hola, mi nombre es ${firstName}`)
-     // console.log('recibir',sessionStorage.getItem("id"));
       console.log('recibir',firstName);
-     // console.log('Tareas',this.tasks);
       Object.keys(this.tasks).forEach(key => {
         if (String(this.tasks[key].Supermercado_idSupermercado) == firstName) {    
             this.supermercado.push({
               ...this.tasks[key]
             });
         }
-       
     });
     console.log("Listado de los supermercado que son iguales a 3",this.supermercado);
-    
-     
     });
   }
-
   addProduct(idProducto: any,index: any){
       console.log([idProducto,index]);
       let cantidad:number = parseInt((<HTMLInputElement>document.getElementById(`cantidad${index}`)).value);
-     // let cantidad:any = Object.keys(this.tasks).find(x => this.tasks[x]. == idProducto);
       let indproducto:any = Object.keys(this.tasks).find(x => this.tasks[x].idProducto == idProducto);
       let subtotal=cantidad*this.tasks[indproducto].precio;
       console.log([cantidad]);
       console.log(this.tasks[indproducto]);
       console.log(typeof this.tasks);
       if(this.tasks[indproducto].stock){
-        console.log('esta es la cantidad',cantidad);
-        console.log('este es el stock',parseInt(this.tasks[indproducto].stock));
-        console.log('esta es el res 3',this.res);
-        if((cantidad>0) && (cantidad <= parseInt(this.tasks[indproducto].stock))   ){
+        if((cantidad>0) && (cantidad <= parseInt(this.tasks[indproducto].stock)) ){
           this.res=parseInt(this.tasks[indproducto].stock);
           console.log('esto tiene el res',this.res);
+          this.res=this.res-cantidad;
+          console.log('esto tiene el res 2',this.res);
+        //cantidad=this.res; 
+          if(this.res==0){
+            alert("No existe el stock solicitado !!!");
+          }
+         else{
           this.total.push({
-            
+            "id":this.tasks[indproducto].idProducto,
             "nombre":this.tasks[indproducto].nombre_producto,
             "unidad":this.tasks[indproducto].unidad,
             "precio":this.tasks[indproducto].precio,
-            "cantidad":cantidad,   
+            "cantidad":cantidad,  
             "subtotal":subtotal
           }); 
-          let cant: string = "" + cantidad;
-          sessionStorage.setItem("cantf", cant);
           this.ftotal();
-          this.res=this.res-cantidad;
-          cantidad=this.res;
-          console.log('esto tiene el cantidad con la res',cantidad);
-          console.log('esto es el res 2', this.res);
-          console.log('javi',this.total);
+         }
         }else{
-          alert("Error al ingresar los productos");
-        console.log('nos van a despedir');
+          alert("Error al ingresar los productos !!!");
         }
-
       }
   }  
   remProduct(id:any){
@@ -117,29 +85,35 @@ export class ProductoComponent {
         this.totalfinal += pro.subtotal;
   }); 
   }
-  //pvp=
-  ngOnInit(): void{ }
-
-  irpagos(){
-    this.router.navigate(['/pago']);
-   /* let idS: string = "" + this.totalfinal;
-    sessionStorage.setItem("tpvp", idS);
-    console.log("convertido a string es: " + idS)*/
+  ngOnInit(): void{
   }
-  gopagos(){
-
-    
-    let fac = {
-
-    "cantidad": "",
-    "valor": "",
-    "producto_idproducto": "",
-    "factura_idfactura": "",
-    "iddetalle":"",
+  enviarprecio() {
+    console.log("el total final", this.totalfinal);
+        let idS: string = "" + this.totalfinal;
+        sessionStorage.setItem("tpvp", idS);
+        console.log("convertido a string es: " + idS)
+        this.router.navigate(['supermercados']);
     }
-    let cantidadf =  String(sessionStorage.getItem("cantf"));
-    console.log(`cantidafactura ${cantidadf}`)
-    
-  }
-}
 
+    irpagos(){
+      this.router.navigate(['/pago']);
+      let idS: string = "" + this.totalfinal;
+      sessionStorage.setItem("tpvp", idS);
+      console.log("convertido a string es: " + idS)
+    }
+    gopagos(){
+  
+      
+      let fac = {
+  
+      "cantidad": "",
+      "valor": "",
+      "producto_idproducto": "",
+      "factura_idfactura": "",
+      "iddetalle":"",
+      }
+      let cantidadf =  String(sessionStorage.getItem("cantf"));
+      console.log(`cantidafactura ${cantidadf}`)
+      
+    }
+  }
