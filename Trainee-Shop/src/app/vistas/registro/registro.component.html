@@ -1,6 +1,6 @@
 <app-header></app-header>
 <br>
-<h1 style="text-align: center; color: #F337C2"> Crear Cuenta </h1>
+<h1 style="text-align: center; color: #F337C2"> Crear Registro </h1>
 <form #registroForm="ngForm">
 
   <div class="p-col-12 p-md-4">
@@ -161,7 +161,7 @@
 
     <div class="p-md-3" style="width: 60%;">
       <div class="p-inputgroup">
-        <button pButton pRipple id="botonRegistrar" style="background: #FF6D4D; width: 100%;" name="addButton" label="Crear Cuenta" type="button" [disabled]="!registroForm.valid || !validarCedula() || !validarContrasena()" (click)="crearCuenta()"></button>
+        <button pButton pRipple id="botonRegistrar" style="background: #FF6D4D; width: 100%;" name="addButton" label="Crear Registro" type="button" [disabled]="!registroForm.valid || !validarCedula() || !validarContrasena()" (click)="crearCuenta()"></button>
       </div>
     </div>
 

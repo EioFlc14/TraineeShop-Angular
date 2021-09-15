@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import { pink } from 'src/environments/environment';
+import { orange } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +9,8 @@ import { Router } from '@angular/router'
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  pinkFront = pink;
 
   constructor(private router:Router) { }
 

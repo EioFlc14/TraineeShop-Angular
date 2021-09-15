@@ -5,6 +5,8 @@ import { ApiLoginService } from '../../servicios/api/api-login.service'
 import { LoginI } from '../../modelos/login.interface'
 import { ResponseI } from '../../modelos/response.interface'
 import { Router } from '@angular/router'
+import { pink } from 'src/environments/environment';
+import { orange } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,9 @@ export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
     usuario: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
-  })
+  });
+  pinkFront = pink;
+  orangeFront = orange;
 
   constructor(private api: ApiLoginService, private router: Router) { }
 
@@ -26,6 +30,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  irregis(){
+    this.router.navigate(['/registro']);
+  }
   onLogin(form: any) {
     //console.log(form)
     this.api.loginByCedula(form).subscribe(data => {

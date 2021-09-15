@@ -1,6 +1,6 @@
 <app-header></app-header>
 <br>
-<h1 style="text-align: center; color: #F337C2"> Factura </h1>
+<h1 style="text-align: center; color: {{pinkFront}}"> Factura </h1>
 <form #registroForm="ngForm">
 
   <div class="p-col-12 p-md-4">
@@ -11,38 +11,42 @@
 
     <div class="p-md-3" style="width: 45%;">
       <div class="p-inputgroup">
-          <span class="p-inputgroup-addon" style="color: black;  background-color: #F337C2"><i class="pi pi-user"></i></span>
-          <label type="text" class="form-control" >{{nombrecli}}</label>
+        <span class="p-inputgroup-addon" style="color: black;  background-color: {{pinkFront}}"><i
+            class="pi pi-user"></i></span>
+        <label type="text" class="form-control">{{nombrecli}}</label>
       </div>
-      
+
     </div>
 
     
     <div class="p-md-3" style="width: 45%;">
       <div class="p-inputgroup">
-        <span class="p-inputgroup-addon" style="color: black; background-color: #F337C2;"><i class="pi-shopping-cart"></i></span>
-        <label id="precio" type="text"  class="form-control"  >{{precio}} </label>
+        <span class="p-inputgroup-addon" style="color: black; background-color: {{pinkFront}};"><i
+            class="pi-shopping-cart"></i></span>
+        <label id="precio" type="text" class="form-control">{{precio}} </label>
       </div>
-      
+
     </div>
 
     <div class="p-md-3" style="width: 45%;">
-      <div class="p-inputgroup" >
-          <span class="p-inputgroup-addon" style="color: black; background-color: #F337C2;"><i class="pi pi-phone"></i></span>
-          <input type="text" class="form-control" placeholder="Numero de contacto" required>
-          
-        </div>
-      
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon" style="color: black; background-color: {{pinkFront}};"><i
+            class="pi pi-phone"></i></span>
+        <input type="text" class="form-control" placeholder="Numero de contacto" required>
+
+      </div>
+
     </div>
     <div class="p-md-3" style="width: 45%;">
       <div class="p-inputgroup">
-        <span class="p-inputgroup-addon" style="color: black; background-color: #F337C2;"><i class="pi pi-map-marker"></i></span>
+        <span class="p-inputgroup-addon" style="color: black; background-color: {{pinkFront}};"><i
+            class="pi pi-map-marker"></i></span>
         <input type="text" class="form-control" placeholder="Ingresar Direccion" required>
       </div>
 
     </div>
 
-    
+
 
 
   </div>
@@ -91,7 +95,8 @@
 
     <div class="p-md-3" style="width: 20%;">
       <div class="p-inputgroup">
-        <button pButton pRipple id="btn-pagar" style="background: #FF6D4D; width: 100%;" name="addButton" label="Pagar" type="button" (click)="enviar()"></button>
+        <button pButton pRipple id="btn-pagar" style="background: {{orangeFront}}; width: 100%;" name="addButton" label="Pagar"
+          type="button" (click)="enviar()"></button>
       </div>
     </div>
 
