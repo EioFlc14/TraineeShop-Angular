@@ -1,10 +1,10 @@
-name: Build
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    types: [opened, synchronize, reopened]
+# This is a basic workflow to help you get started with Actions
+
+name: Pipeline Angular
+
+# Controls when the workflow will run
+on: [push]
+
 jobs:
   sonarcloud:
     name: SonarCloud
