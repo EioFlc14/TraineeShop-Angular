@@ -1,38 +1,33 @@
 <app-header></app-header>
-<br>
 <h1 style="text-align: center; color: {{pinkFront}}"> Factura </h1>
 <form #registroForm="ngForm">
 
   <div class="p-col-12 p-md-4">
-    <h4>Información Personal</h4>
+    <h5>Información Personal</h5>
   </div>
 
   <div class="grid" style="justify-content: center;">
-
     <div class="p-md-3" style="width: 45%;">
       <div class="p-inputgroup">
         <span class="p-inputgroup-addon" style="color: black;  background-color: {{pinkFront}}"><i
             class="pi pi-user"></i></span>
         <label type="text" class="form-control">{{nombrecli}}</label>
       </div>
-
     </div>
 
-    
     <div class="p-md-3" style="width: 45%;">
       <div class="p-inputgroup">
         <span class="p-inputgroup-addon" style="color: black; background-color: {{pinkFront}};"><i
             class="pi-shopping-cart"></i></span>
         <label id="precio" type="text" class="form-control">{{precio}} </label>
       </div>
-
     </div>
 
     <div class="p-md-3" style="width: 45%;">
       <div class="p-inputgroup">
         <span class="p-inputgroup-addon" style="color: black; background-color: {{pinkFront}};"><i
             class="pi pi-phone"></i></span>
-        <input type="text" class="form-control" placeholder="Numero de contacto" required>
+        <input type="text" id="numeroContacto" class="form-control" placeholder="Número de contacto" required>
 
       </div>
 
@@ -41,62 +36,52 @@
       <div class="p-inputgroup">
         <span class="p-inputgroup-addon" style="color: black; background-color: {{pinkFront}};"><i
             class="pi pi-map-marker"></i></span>
-        <input type="text" class="form-control" placeholder="Ingresar Direccion" required>
+        <input type="text" id="direccionEnvio" class="form-control" placeholder="Ingresar Dirección" required>
       </div>
 
     </div>
-
-
-
-
   </div>
 
 
   <div class="p-col-12 p-md-4">
-    <h4>Información de Pago</h4>
+    <h5>Información de Pago</h5>
   </div>
 
   <div class="grid" style="justify-content: center;">
-  <div class="input-group mb-3"  style="width: 45%;" >
-      <div class="input-group-prepend" >
-        <label class="input-group-text" for="inputGroupSelect01" style="color: black; background-color: #F337C2;">Tipo de pago</label>
+    <div class="p-md-2" style="width: 45%;">
+      <div class="input-group-prepend">
+        <h6>Tipo</h6>
       </div>
-      <select class="form-select" aria-label="Default select example" id="tipop"  >
-        <option selected>Seleccionar</option>
-        <!-- <option [value]="dato" *ngFor="let dato of tcuenta">
-          {{dato}}
-        </option> -->
-        <option value="1">Debito Bancario</option>
+      <select class="form-select" aria-label="Default select example" id="tipop">
+        <option value="1" selected>Debito Bancario</option>
         <option value="2">Tarjeta de credito</option>
       </select>
-
-  </div>
-  <div class="input-group mb-3" style="width: 45%;" >
-    <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect02"style="color: black; background-color: #F337C2;">Seleccionar Banco</label>
     </div>
-    <select class="custom-select" class="form-select" aria-label="Default select example" id="tipob">
-      <option selected>Seleccionar</option>
-      
-      <option value="b1">Banco A</option>
-      <option value="b2">Banco B</option>
-      <option value="b3">Banco c</option>
+    <div class="p-md-2" style="width: 45%; justify-content: center">
+      <div class="input-group-prepend">
+        <h6>Banco</h6>
+      </div>
+      <select class="custom-select" class="form-select" aria-label="Default select example" id="tipob">
+        <option value="b1" selected>Banco General Rumiñahui (BGR)</option>
+        <option value="b2">Banco B</option>
+        <option value="b3">Banco C</option>
+      </select>
 
-    </select>
-  
-</div>
-  <div class="container"  >
-      Ingresar cuenta:
-        <input pInputText id="cuenta" name="cuenta_"type="text" class="form-control" [(ngModel)]="cuenta" placeholder="Ingresar numero de cuenta" style="width: 45%;"required>
+    </div>
+    <div class="grid" style="justify-content: center;">
+      <div class="p-md-2" style="width: 90%;">
+        Ingresar cuenta:
+        <input pInputText id="cuenta" name="cuenta_" type="text" class="form-control" [(ngModel)]="cuenta"
+          placeholder="Ingresar numero de cuenta" required>
+      </div>
+    </div>
   </div>
-</div>
 
   <div class="grid" style="justify-content: center;">
-
-    <div class="p-md-3" style="width: 20%;">
-      <div class="p-inputgroup">
-        <button pButton pRipple id="btn-pagar" style="background: {{orangeFront}}; width: 100%;" name="addButton" label="Pagar"
-          type="button" (click)="enviar()"></button>
+    <div class="p-md-2">
+      <div class="p-inputgroup" >
+        <button pButton pRipple id="btn-pagar" style="background: {{orangeFront}}; border-color: {{orangeFront}};  width:200px;" name="addButton"
+          label="Pagar" type="button" (click)="enviar()"></button>
       </div>
     </div>
 

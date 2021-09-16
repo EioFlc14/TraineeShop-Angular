@@ -12,7 +12,7 @@
     <div class="p-md-3" style="width: 90%;">
       <div class="p-inputgroup">
           <span class="p-inputgroup-addon" style="color: black;  background-color: #F337C2"><i class="pi pi-user"></i></span>
-          <input pInputText type="text" name="nombre" maxlength="45" placeholder="Nombre y Apellido" pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1]{1}[a-zA-ZÀ-ÿ\u00f1\u00d1\s]*" [(ngModel)]="registro.nombre" #nombreInput="ngModel" required/>
+          <input pInputText type="text" id="nombre" name="nombre" maxlength="45" placeholder="Nombre y Apellido" pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1]{1}[a-zA-ZÀ-ÿ\u00f1\u00d1\s]*" [(ngModel)]="registro.nombre" #nombreInput="ngModel" required/>
       </div>
       <div *ngIf="nombreInput.touched && nombreInput.dirty">
         <p *ngIf="nombreInput.errors?.required " style="color: red">
@@ -30,7 +30,7 @@
     <div class="p-md-3" style="width: 45%;">
       <div class="p-inputgroup" >
           <span class="p-inputgroup-addon" style="color: black; background-color: #F337C2;"><i class="pi pi-phone"></i></span>
-          <input pInputText type="text" name="celular" maxlength="15" pattern="([0-9]){10,}" [(ngModel)]="registro.celular" #celularInput="ngModel" required placeholder="Número Celular"/>
+          <input pInputText type="text" id="celular" name="celular" maxlength="15" pattern="([0-9]){10,}" [(ngModel)]="registro.celular" #celularInput="ngModel" required placeholder="Número Celular"/>
       </div>
       <div *ngIf="celularInput.touched && celularInput.dirty">
         <p *ngIf="celularInput.errors?.required " style="color: red">
@@ -48,7 +48,7 @@
     <div class="p-md-3" style="width: 45%;">
       <div class="p-inputgroup">
         <span class="p-inputgroup-addon" style="color: black; background-color: #F337C2;"><i class="pi pi-envelope"></i></span>
-         <input pInputText type="email" name="email" maxlength="50" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" [(ngModel)]="registro.email" #emailInput="ngModel" required placeholder="Email"/>
+         <input pInputText type="email" id="email" name="email" maxlength="50" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" [(ngModel)]="registro.email" #emailInput="ngModel" required placeholder="Email"/>
       </div>
       <div *ngIf="emailInput.touched && emailInput.dirty">
         <p *ngIf="emailInput.errors?.required " style="color: red">
@@ -76,7 +76,7 @@
     <div class="p-md-3" style="width: 90%;">
       <div class="p-inputgroup">
         <span class="p-inputgroup-addon" style="color: black; background-color: #F337C2;"><i class="pi pi-map-marker"></i></span>
-        <input pInputText type="texxt" name="direccion" maxlength="100" [(ngModel)]="registro.direccion" #direccionInput="ngModel" required placeholder="Dirección"/>
+        <input pInputText type="texxt" id="direccion" name="direccion" maxlength="100" [(ngModel)]="registro.direccion" #direccionInput="ngModel" required placeholder="Dirección"/>
       </div>
       <div *ngIf="direccionInput.touched && direccionInput.dirty">
         <p *ngIf="direccionInput.errors?.required || validarDireccion()" style="color: red">
@@ -101,7 +101,7 @@
     <div class="p-md-3" style="width: 30%;">
       <div class="p-inputgroup">
         <span class="p-inputgroup-addon" style="color: black; background-color: #F337C2;"><i class="pi pi-id-card"></i></span>
-        <input pInputText type="text" name="cedula"  pattern="([0-9]){10}" [(ngModel)]="registro.cedula" #cedulaInput="ngModel" required placeholder="Usuario (Cédula)" />
+        <input pInputText type="text" id="cedula" name="cedula" pattern="([0-9]){10}" [(ngModel)]="registro.cedula" #cedulaInput="ngModel" required placeholder="Usuario (Cédula)" />
       </div>
       <div *ngIf="cedulaInput.touched && cedulaInput.dirty">
         <p *ngIf="cedulaInput.errors?.required " style="color: red">
@@ -116,7 +116,7 @@
     <div class="p-md-3" style="width: 30%;">
       <div class="p-inputgroup">
         <span class="p-inputgroup-addon" style="color: black; background-color: #F337C2;"><i class="pi pi-key"></i></span>
-        <input pInputText type="password" name="contrasena"  minlength="8" maxlength="45" [(ngModel)]="registro.contrasena" #passwordInput="ngModel" required placeholder="Contraseña" />
+        <input pInputText type="password" id="contrasena" name="contrasena"  minlength="8" maxlength="45" [(ngModel)]="registro.contrasena" #passwordInput="ngModel" required placeholder="Contraseña" />
       </div>
       <div *ngIf="passwordInput.touched && passwordInput.dirty">
         <p *ngIf="passwordInput.errors?.required " style="color: red">
@@ -134,7 +134,7 @@
     <div class="p-md-3" style="width: 30%;">
       <div class="p-inputgroup">
         <span class="p-inputgroup-addon" style="color: black; background-color: #F337C2;"><i class="pi pi-key"></i></span>
-        <input pInputText type="password" name="confirmContrasena"  minlength="8" maxlength="45" [(ngModel)]="confirmContrasena" #passwordConfInput="ngModel" required placeholder="Confirme su contraseña" />
+        <input pInputText type="password" id="confirmContrasena" name="confirmContrasena"  minlength="8" maxlength="45" [(ngModel)]="confirmContrasena" #passwordConfInput="ngModel" required placeholder="Confirme su contraseña" />
       </div>
       <div *ngIf="passwordConfInput.touched && passwordConfInput.dirty">
         <p *ngIf="passwordConfInput.errors?.required " style="color: red">
@@ -158,7 +158,6 @@
   <br>
 
   <div class="grid" style="justify-content: center;">
-
     <div class="p-md-3" style="width: 60%;">
       <div class="p-inputgroup">
         <button pButton pRipple id="botonRegistrar" style="background: #FF6D4D; width: 100%;" name="addButton" label="Crear Registro" type="button" [disabled]="!registroForm.valid || !validarCedula() || !validarContrasena()" (click)="crearCuenta()"></button>
