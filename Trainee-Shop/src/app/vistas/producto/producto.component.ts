@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductoService } from '../../servicios/api/api-productos.service';
-import {MatDialogModule, MatDialogConfig, MatDialogRef, MatDialog} from '@angular/material/dialog'; 
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
