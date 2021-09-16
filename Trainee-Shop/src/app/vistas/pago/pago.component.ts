@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ApiPagosServicio } from 'src/app/servicios/api/api-pagos.service';
 import { pink } from 'src/environments/environment';
 import { orange } from 'src/environments/environment';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-pago',
@@ -24,7 +25,7 @@ export class PagoComponent implements OnInit {
   opcionSeleccionado: string = "0";
   verSeleccion: string = "";
 
-  constructor(private router: Router, private http: HttpClient, private pagoservicio: ApiPagosServicio) { }
+  constructor(private router: Router, private http: HttpClient, private pagoservicio: ApiPagosServicio, private messageService: MessageService) { }
 
   ngOnInit(
   ): void {
@@ -63,22 +64,25 @@ export class PagoComponent implements OnInit {
         this.pagoservicio.pagarbanco(token, this.precio).subscribe(
           repuestapago => {
             if (repuestapago.code == 0) {
-              alert('Pago realizado exitosamente');
+              this.messageService.add({key: 'myKey2', severity:'success', summary: 'Pago realizado exitosamente'});
+              setInterval(() => {
+                this.router.navigate(['supermercados']);
+              }, 2000);
             } else {
-              alert('Error al realizar pago');
+              this.messageService.add({key: 'myKey2', severity:'error', summary: 'Error al realizar el pago.'});
             }
           },
           errorpago => {
             console.error(errorpago);
+            this.messageService.add({key: 'myKey2', severity:'error', summary: 'Error al realizar el pago.'});
           }
         )
       },
       error => {
         if (error.status == 404) {
-
-          alert('No existe la cuenta');
+          this.messageService.add({key: 'myKey2', severity:'warn', summary: 'No existe la cuenta.'});
         } else {
-          alert('Error al realizar la verificación');
+          this.messageService.add({key: 'myKey2', severity:'error', summary: 'Error al realizar la verificación.'});
 
         }
       }
