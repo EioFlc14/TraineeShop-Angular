@@ -17,7 +17,7 @@ export class PagoComponent implements OnInit {
   orangeFront = orange;
 
   tcuenta: string[] = ["debito bancario", "tarjeta de credito"];
-  precio: number = 0;
+  precio: string = "0.00";
   nombrecli: string = "";
   ced: string = "";
   cuenta: string = "";
@@ -29,8 +29,12 @@ export class PagoComponent implements OnInit {
   ngOnInit(
   ): void {
 
-    this.precio = Math.round(Number(sessionStorage.getItem("tpvp")) * 100) / 100;
-    console.log(`precio ${this.precio}`)
+    this.precio = String(Math.round(Number(sessionStorage.getItem("tpvp")) * 100) / 100);
+    let precioAux = this.precio.split(".");
+    
+    if(precioAux[1].length != 2){
+      this.precio = this.precio + "0";
+    }
 
     this.nombrecli = String(sessionStorage.getItem("nombre"));
     console.log(`nombrecliente ${this.nombrecli}`)
@@ -56,7 +60,7 @@ export class PagoComponent implements OnInit {
     this.pagoservicio.validarcuenta(idc, cuenta).subscribe(
       respuestaverificacion => {
         let token = respuestaverificacion.token
-        this.pagoservicio.pagarbanco(token, String(this.precio)).subscribe(
+        this.pagoservicio.pagarbanco(token, this.precio).subscribe(
           repuestapago => {
             if (repuestapago.code == 0) {
               alert('Pago realizado exitosamente');
