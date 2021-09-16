@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
       if (dataResponse != null) {
         //localStorage.setItem("cedula",dataResponse.cedula);
         sessionStorage.setItem("cedula", dataResponse.cedula);
+        sessionStorage.setItem("nombre", dataResponse.nombreCliente);
         this.router.navigate(['supermercados']);
       } else {
         this.errorStatus = true;

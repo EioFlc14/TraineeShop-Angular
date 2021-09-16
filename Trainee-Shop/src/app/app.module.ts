@@ -1,5 +1,4 @@
-// Modulos
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -7,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ChartModule } from 'primeng/chart';
 
@@ -16,7 +16,8 @@ import { HeaderComponent } from './plantillas/header/header.component';
 import { FooterComponent } from './plantillas/footer/footer.component';
 import { SupermercadosComponent } from './vistas/supermercados/supermercados.component'
 import { RegistroComponent } from './vistas/registro/registro.component';
-import { ProductoComponent } from './vistas/producto/producto.component'
+import { ProductoComponent } from './vistas/producto/producto.component';
+import { PagoComponent } from './vistas/pago/pago.component'
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ProductoComponent } from './vistas/producto/producto.component'
     routingComponents,
     SupermercadosComponent,
     RegistroComponent,
-    ProductoComponent
+    ProductoComponent,
+    PagoComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +41,12 @@ import { ProductoComponent } from './vistas/producto/producto.component'
     InputTextModule,
     ToastModule,
     BrowserAnimationsModule,
+    MatDialogModule,
     ChartModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA]
+  
 })
 export class AppModule { }

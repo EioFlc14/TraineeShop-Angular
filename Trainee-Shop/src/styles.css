@@ -13,3 +13,4 @@ tbody tr:nth-child(odd) {
   * {
     -webkit-box-sizing: border-box;
 }
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
