@@ -2,7 +2,7 @@
 <div style="text-align:center "> 
     <br>
     <h1 style="color: rgb(233, 10, 177)">
-      Trainee Shop
+      Productos 
     </h1>
     <br>
      <!-- Force next columns to break to new line -->
@@ -16,10 +16,10 @@
                 {{ item.nombre_producto }}
               </h5>
               <p class="card-text">
-                {{ item.precio }} • {{ item.unidad }}  
+                $ {{ item.precio }} • {{ item.unidad }}  
               </p>
               <input type="number" class="form-control " min="1" [max]="item.stock" [id]="'cantidad'+i">
-              <a class="btn btn-primary btn-sm " href="javascript:void(0)" role="button" (click)="addProduct(item.idProducto,i)">Agregar</a>
+              <button class="btn btn-primary btn-sm " id="btn{{i}}" role="button" (click)="addProduct(item.idProducto,i)">Agregar</button>
             </div>
           </div>
         </div>
@@ -74,13 +74,18 @@
           </div>
           <div class="col-1 border">
             {{ totalfinal | number: '1.1-2' }}
+             
           </div>
         <div>
-            <button class="btn-primary" (click)="openDialog()">
+            <button id="btnComprar" class="btn-primary" (click)="irpagos()">
             Comprar
             </button>
         </div>
+
+          
         </div>
     </div>
   </div>
-  <!-- <app-footer></app-footer> -->
+  <app-footer></app-footer>
+
+  

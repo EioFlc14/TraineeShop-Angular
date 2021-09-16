@@ -12,12 +12,11 @@
                     <img src="{{supermercado.imagen_supermercado}}" class="img-fluid" alt="{{supermercado.nombre_supermercado}}">
                 </div>
                 <div class="member-img">
-                    <a  (click)="enviarIdSuper(supermercado.idSupermercado)" class="btn btn-primary "  role="button">{{supermercado.nombre_supermercado}}</a>
+                    <button (click)="enviarIdSuper(supermercado.idSupermercado)" class="btn btn-primary" id="btn-{{supermercado.nombre_supermercado}}"  role="button">{{supermercado.nombre_supermercado}}</button>
                 </div>   
               </div>
           </div>
         </div>
-    
 </div>
 </body>
 <br>
