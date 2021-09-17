@@ -6,7 +6,8 @@ import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-pago',
   templateUrl: './pago.component.html',
-  styleUrls: ['./pago.component.css']
+  styleUrls: ['./pago.component.css'],
+  providers: [MessageService]
 })
 
 export class PagoComponent implements OnInit {
