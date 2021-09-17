@@ -89,6 +89,7 @@ export class ProductoComponent {
   }
   ngOnInit(): void{
   }
+  
   enviarprecio() {
     console.log("el total final", this.totalfinal);
         let idS: string = "" + this.totalfinal;
@@ -98,10 +99,10 @@ export class ProductoComponent {
     }
 
     irpagos(){
-      this.router.navigate(['/pago']);
       let idS: string = "" + this.totalfinal;
       sessionStorage.setItem("tpvp", idS);
-      console.log("convertido a string es: " + idS)
+      console.log("convertido a string es: " + idS);
+      this.router.navigate(['pago']);
     }
     
       

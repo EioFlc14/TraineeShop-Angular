@@ -1,4 +1,3 @@
-import { DashboardComponent } from './vistas/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './vistas/login/login.component';
@@ -11,11 +10,10 @@ import { PagoComponent } from './vistas/pago/pago.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'registro', component: RegistroComponent },
   { path: 'supermercados', component: SupermercadosComponent, canActivate: [AuthGuard] },
   { path: 'producto', component: ProductoComponent, canActivate: [AuthGuard]},
-  {path: 'pago', component: PagoComponent, canActivate: [AuthGuard]}
+  { path: 'pago', component: PagoComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -25,5 +23,6 @@ const routes: Routes = [
 export class AppRoutingModule {
 
 }
-export const routingComponents = [LoginComponent, DashboardComponent, SupermercadosComponent, RegistroComponent,PagoComponent,ProductoComponent]
+
+export const routingComponents = [LoginComponent, SupermercadosComponent, RegistroComponent,PagoComponent,ProductoComponent]
 

@@ -1,5 +1,5 @@
 <app-header></app-header>
-<h1 style="text-align: center; color: {{pinkFront}}"> Factura </h1>
+<h1 style="text-align: center; color: #F337C2"> Factura </h1>
 <form #registroForm="ngForm">
 
   <div class="p-col-12 p-md-4">
@@ -9,7 +9,7 @@
   <div class="grid" style="justify-content: center;">
     <div class="p-md-3" style="width: 45%;">
       <div class="p-inputgroup">
-        <span class="p-inputgroup-addon" style="color: black;  background-color: {{pinkFront}}"><i
+        <span class="p-inputgroup-addon" style="color: black;  background-color: #F337C2"><i
             class="pi pi-user"></i></span>
         <label type="text" class="form-control">{{nombrecli}}</label>
       </div>
@@ -17,7 +17,7 @@
 
     <div class="p-md-3" style="width: 45%;">
       <div class="p-inputgroup">
-        <span class="p-inputgroup-addon" style="color: black; background-color: {{pinkFront}};"><i
+        <span class="p-inputgroup-addon" style="color: black; background-color: #F337C2;"><i
             class="pi-shopping-cart"></i></span>
         <label id="precio" type="text" class="form-control">{{precio}} </label>
       </div>
@@ -25,7 +25,7 @@
 
     <div class="p-md-3" style="width: 45%;">
       <div class="p-inputgroup">
-        <span class="p-inputgroup-addon" style="color: black; background-color: {{pinkFront}};"><i
+        <span class="p-inputgroup-addon" style="color: black; background-color: #F337C2;"><i
             class="pi pi-phone"></i></span>
         <input type="text" id="numeroContacto" class="form-control" placeholder="Número de contacto" required>
 
@@ -34,11 +34,10 @@
     </div>
     <div class="p-md-3" style="width: 45%;">
       <div class="p-inputgroup">
-        <span class="p-inputgroup-addon" style="color: black; background-color: {{pinkFront}};"><i
+        <span class="p-inputgroup-addon" style="color: black; background-color: #F337C2;"><i
             class="pi pi-map-marker"></i></span>
         <input type="text" id="direccionEnvio" class="form-control" placeholder="Ingresar Dirección" required>
       </div>
-
     </div>
   </div>
 
@@ -80,7 +79,7 @@
   <div class="grid" style="justify-content: center;">
     <div class="p-md-2">
       <div class="p-inputgroup" >
-        <button pButton pRipple id="btn-pagar" style="background: {{orangeFront}}; border-color: {{orangeFront}}; width:200px;" name="addButton"
+        <button pButton pRipple id="btn-pagar" style="background: #FF6D4D; border-color: #FF6D4D; width:200px;" name="addButton"
           label="Pagar" type="button" (click)="enviar()"></button>
       </div>
     </div>
