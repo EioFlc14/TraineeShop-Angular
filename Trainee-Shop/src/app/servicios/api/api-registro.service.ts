@@ -8,7 +8,7 @@ import {Observable} from 'rxjs'
 })
 export class ApiRegistroServicio {
 
-  url:string = "http://ab8be0d726b87422f9d9d4eb75bee11a-215326113.us-west-1.elb.amazonaws.com:4003/clientes/";
+  url:string = "http://ae15aed604280424696205cdd4255744-632254846.us-west-1.elb.amazonaws.com:4003/clientes/";
 
   constructor(
     private _http:HttpClient

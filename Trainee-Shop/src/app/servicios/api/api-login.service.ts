@@ -12,7 +12,7 @@ import { timeout, catchError } from 'rxjs/operators';
 })
 export class ApiLoginService {
   //url:string = "http://54.221.130.211:4005/clientes/login/";
-  url:string = "http://ae68e5368040242e6a68d4c1c17760ec-1740643031.us-west-1.elb.amazonaws.com:4005/clientes/login/";
+  url:string = "http://ae48f17e287af493ca472bd0ba20c2ab-1831940168.us-west-1.elb.amazonaws.com:4005/clientes/login/";
 
   constructor(private http:HttpClient) { }
   errorMsj:any = "";
@@ -21,6 +21,6 @@ export class ApiLoginService {
   loginByCedula(form:LoginI):Observable<ResponseI>{
     let direccion = this.url + form.usuario + "/" + form.password;
     return this.http.get<ResponseI>(direccion);
-
   }
+
 }
